@@ -40,8 +40,10 @@
 		text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 		line-height: math.div(49, 36);
 		margin-bottom: rem(50);
-		._header-scroll & {
-			padding: rem(625) rem(0) rem(0) rem(0);
+		@media (min-width: $tablet) {
+			._header-scroll & {
+				padding: rem(625) rem(0) rem(0) rem(0);
+			}
 		}
 	}
 
