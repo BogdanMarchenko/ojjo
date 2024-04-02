@@ -321,10 +321,6 @@ h6 {
   margin-bottom: 3.125rem;
 }
 
-._header-scroll .header__title {
-  padding: 39.0625rem 0rem 0rem 0rem;
-}
-
 .header__button {
   margin-bottom: 6.875rem;
   display: -webkit-box;
@@ -588,6 +584,10 @@ h6 {
 }
 
 @media (min-width: 61.99875em) {
+  ._header-scroll .header__title {
+    padding: 39.0625rem 0rem 0rem 0rem;
+  }
+
   .menu__social {
     display: none;
   }
