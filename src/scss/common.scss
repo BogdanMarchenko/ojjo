@@ -16,7 +16,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	max-width: rem(320);
 	padding: rem(25) 0;
 	& :last-child .social__link {
 		font-size: rem(24);
@@ -30,5 +29,15 @@
 	&__link {
 		display: inline-block;
 		font-size: rem(39);
+		@media (any-hover: hover) {
+			&:hover {
+				color: goldenrod;
+			}
+		}
+		@media (max-width: $tablet) {
+			&:active {
+				color: goldenrod;
+			}
+		}
 	}
 }

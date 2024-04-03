@@ -94,6 +94,17 @@
             }));
         }
     }), 0);
+    "use strict";
+    let menuList = document.querySelector(".menu__list");
+    function toToggleClass(item) {
+        item.classList.add("flip-horizontal-top");
+        setTimeout((() => {
+            item.classList.remove("flip-horizontal-top");
+        }), 800);
+    }
+    menuList.addEventListener("click", (function(e) {
+        if (e.target.closest(".menu__link")) toToggleClass(e.target.closest(".menu__link"));
+    }));
     window["FLS"] = true;
     isWebp();
     menuInit();

@@ -144,9 +144,6 @@
 
 	&__body {
 		position: relative;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
 		height: rem(102);
 		font-weight: 400;
 		font-size: rem(14);
@@ -154,19 +151,39 @@
 		@media (max-width: $tablet) {
 			position: fixed;
 			top: 0;
-			/*left: -100%; или translate: (0px, -100%)*/
 			left: -100%;
-			width: 100%;
 			min-height: 100%;
-			background-color: #333333;
-			padding: rem(120) rem(30) rem(30) rem(30);
+			width: 100%;
 			transition: left 0.3s ease 0s;
 			overflow: auto;
-			display: block;
 			.menu-open & {
-				/*left: 0; или translate: (0px, 0%)*/
 				left: 0;
 			}
+		}
+	}
+
+	//menu__block
+	&__block {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		min-height: 100%;
+		font-weight: 400;
+		font-size: rem(14);
+		line-height: math.div(21, 14);
+		@media (max-width: $tablet) {
+			flex-direction: column;
+			align-items: start;
+			justify-content: start;
+			align-items: stretch;
+			min-height: 100%;
+			max-width: rem(400);
+			background-color: #333333;
+			padding: rem(120) rem(30) rem(0) rem(30);
+		}
+
+		@media (max-width: $mobileSmall) {
+			min-width: 100%;
 		}
 	}
 
@@ -179,15 +196,15 @@
 		column-gap: rem(40);
 		@media (max-width: $tablet) {
 			flex-direction: column;
-			align-items: start;
-			row-gap: rem(30);
-			margin-bottom: rem(30);
+			align-items: flex-start;
+			align-self: stretch;
 		}
 	}
 
 	// .menu__item
 
 	&__item {
+		align-self: stretch;
 	}
 
 	// .menu__link
@@ -198,18 +215,20 @@
 		padding: rem(0) rem(3);
 		@media (any-hover: hover) {
 			&:hover {
-				border-bottom: 1px solid goldenrod;
+				border-bottom: rem(1) solid goldenrod;
 				color: goldenrod;
 			}
 		}
-		&:active {
-			color: goldenrod;
-		}
+
 		@media (max-width: $tablet) {
-			padding: rem(0);
+			padding: rem(15) rem(0);
 			font-size: 21px;
 			line-height: math.div(29, 21);
-			border: none;
+			width: 100%;
+			&:active {
+				color: goldenrod;
+				border-bottom: rem(1) solid goldenrod;
+			}
 		}
 	}
 	//.menu__logo
@@ -316,13 +335,24 @@
 			}
 		}
 		@media (max-width: $tablet) {
-			padding-bottom: rem(35);
+			margin-right: rem(0);
+			margin-bottom: rem(35);
+		}
+
+		@media (max-width: $tablet) {
+			padding: rem(15) rem(0);
+			font-size: 21px;
+			line-height: math.div(29, 21);
+			width: 100%;
+			&:active {
+				color: goldenrod;
+				border-bottom: rem(1) solid goldenrod;
+			}
 		}
 	}
 	//.login__actions
 	&__actions {
 		display: flex;
-		justify-content: space-between;
 		column-gap: rem(25);
 		@media (max-width: $tablet) {
 			justify-content: start;
