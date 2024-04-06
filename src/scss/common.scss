@@ -1,4 +1,16 @@
 // Заголовки, общие БЄМ блоки и проче...
+.section-title {
+	// font-family: $secondFamily;
+	font-weight: 800;
+	font-size: rem(30);
+	color: hsl(0, 0%, 0%);
+	@media (max-width: $mobile) {
+		font-size: rem(25);
+	}
+	@media (max-width: $mobileSmall) {
+		font-size: rem(21);
+	}
+}
 
 .button {
 	display: inline-block;
