@@ -605,6 +605,14 @@ h6 {
     color: goldenrod;
   }
 
+  .header__title {
+    padding: 20.125rem 0rem 0rem 0rem;
+  }
+
+  .header__sub-part {
+    display: none;
+  }
+
   .menu {
     position: fixed;
     z-index: 6;
