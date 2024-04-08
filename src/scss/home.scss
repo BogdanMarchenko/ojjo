@@ -69,7 +69,7 @@
 		color: $mainColor;
 		border: rem(1) solid $grey;
 		&._tab-active {
-			color: #ffffff;
+			color: #fff;
 			background-color: $mainColor;
 		}
 		@media (max-width: $tablet) {
