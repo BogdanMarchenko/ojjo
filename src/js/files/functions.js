@@ -417,6 +417,12 @@ export function menuInit() {
 				bodyLockToggle();
 				document.documentElement.classList.toggle("menu-open");
 			}
+			// my fix для того щоб при ситуації коли lock = true та туди куди клікнули об'єкт включав menu__body та не включав menu__block так як меню блок лежить в меню боди і меню блок менший! Це зроблено для того щоб на айпаді бургер був не на весь екран і закривався не тільки по кліку на крестик а ще по кліку на вільне поле menu__body
+			if (bodyLockStatus && e.target.closest('.menu__body') && !e.target.closest('.menu__block')) {
+				bodyLockToggle();
+				document.documentElement.classList.toggle("menu-open");
+			}
+			//
 		});
 	};
 }
