@@ -227,6 +227,10 @@
                 bodyLockToggle();
                 document.documentElement.classList.toggle("menu-open");
             }
+            if (bodyLockStatus && e.target.closest(".menu__body") && !e.target.closest(".menu__block")) {
+                bodyLockToggle();
+                document.documentElement.classList.toggle("menu-open");
+            }
         }));
     }
     function uniqArray(array) {
