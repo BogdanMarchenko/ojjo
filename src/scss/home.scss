@@ -47,13 +47,12 @@
 		margin-bottom: rem(55);
 		@media (max-width: $tablet) {
 			grid-template-rows: auto;
-			grid-template-columns: repeat(auto-fit, minmax(rem(30), rem(130)));
+			grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
 			gap: rem(16);
 			margin-bottom: rem(35);
 		}
 		@media (max-width: $mobileSmall) {
 			gap: rem(10);
-			grid-template-columns: repeat(auto-fit, minmax(rem(50), rem(81)));
 		}
 	}
 
