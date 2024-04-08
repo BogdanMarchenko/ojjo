@@ -232,6 +232,27 @@ h6 {
   padding: 0 0.9375rem;
 }
 
+.tabs__navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tabs__title {
+  border: 1px solid #eee;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.3125rem;
+}
+
+.tabs__title._tab-active {
+  border: 1px solid #000;
+}
+
+.tabs__content {
+  border: 1px solid #eee;
+  padding: 0.625rem 0.9375rem;
+}
+
 [class*=-ibg] {
   position: relative;
 }
@@ -249,6 +270,12 @@ h6 {
 [class*=-ibg_contain] img {
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.section-title {
+  font-weight: 800;
+  font-size: 1.875rem;
+  color: hsl(0, 0%, 0%);
 }
 
 .button {
@@ -590,6 +617,80 @@ h6 {
   margin-right: 0.5rem;
 }
 
+.events__container {
+  padding: 6.25rem 0rem 7.5rem 0rem;
+}
+
+.events__title {
+  text-align: center;
+  margin-bottom: 0.9375rem;
+}
+
+.events__main-title {
+  text-align: center;
+  margin-bottom: 3.75rem;
+}
+
+.tabs-events__navigation {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.125rem;
+  margin-bottom: 3.4375rem;
+}
+
+.tabs-events__title {
+  font-weight: 500;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1.0625rem 0rem;
+  color: #333333;
+  border: 0.0625rem solid #d6d6d6;
+}
+
+.tabs-events__title._tab-active {
+  color: #ffffff;
+  background-color: #333333;
+}
+
+.tabs-events__items {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.875rem;
+}
+
+.tabs-events__item {
+  display: block;
+  position: relative;
+}
+
+.tabs-events__link {
+  position: relative;
+  display: block;
+  padding: 8.75rem 0rem;
+}
+
+.tabs-events__text {
+  position: absolute;
+  bottom: 1.875rem;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0px);
+      -ms-transform: translate(-50%, 0px);
+          transform: translate(-50%, 0px);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+}
+
 @media (min-width: 61.99875em) {
   ._header-scroll .header__title {
     padding: 39.0625rem 0rem 0rem 0rem;
@@ -815,11 +916,71 @@ h6 {
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
   }
+
+  .events__container {
+    padding: 5rem 1.3125rem 5.625rem 1.3125rem;
+  }
+
+  .events__main-title {
+    margin-bottom: 1.875rem;
+  }
+
+  .tabs-events__navigation {
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(1.875rem, 8.125rem));
+    gap: 1rem;
+    margin-bottom: 2.1875rem;
+  }
+
+  .tabs-events__title {
+    padding: 0.3125rem 0rem;
+    font-size: 0.75rem;
+  }
+
+  .tabs-events__items {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 47.99875em) {
+  .section-title {
+    font-size: 1.5625rem;
+  }
+
+  .tabs-events__title {
+    font-size: 0.6875rem;
+  }
+
+  .tabs-events__items {
+    grid-template-rows: repeat(auto-fit, minmax(50px, 120px));
+  }
+
+  .tabs-events__link {
+    padding: 3.75rem 0rem;
+  }
+
+  .tabs-events__text {
+    bottom: 50%;
+    -webkit-transform: translate(-50%, 50%);
+        -ms-transform: translate(-50%, 50%);
+            transform: translate(-50%, 50%);
+  }
 }
 
 @media (max-width: 29.99875em) {
+  .section-title {
+    font-size: 1.3125rem;
+  }
+
   .menu__block {
     min-width: 100%;
+  }
+
+  .tabs-events__navigation {
+    gap: 0.625rem;
+    grid-template-columns: repeat(auto-fit, minmax(3.125rem, 5.0625rem));
   }
 }
 
@@ -857,6 +1018,26 @@ h6 {
   }
 
   .login__faivorites:hover {
+    color: goldenrod;
+  }
+
+  .tabs-events__link:hover::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.357);
+  }
+
+  .tabs-events__link:hover ~ .tabs-events__text {
+    z-index: 3;
+    color: goldenrod;
+  }
+
+  .tabs-events__text:hover {
     color: goldenrod;
   }
 }
