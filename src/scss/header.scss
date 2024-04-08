@@ -42,6 +42,9 @@
 				padding: rem(625) rem(0) rem(0) rem(0);
 			}
 		}
+		@media (max-width: $tablet) {
+			padding: rem(322) rem(0) rem(0) rem(0);
+		}
 	}
 
 	// .header__button
@@ -69,6 +72,9 @@
 	&__sub-part {
 		position: relative;
 		z-index: 2;
+		@media (max-width: $tablet) {
+			display: none;
+		}
 	}
 }
 
