@@ -61,8 +61,8 @@
 		background-color: $mainColor;
 		@media (any-hover: hover) {
 			&:hover {
-				background-color: #fff;
-				color: $mainColor;
+				background-color: $mainColor;
+				color: goldenrod;
 				border: rem(1) solid goldenrod;
 			}
 		}
