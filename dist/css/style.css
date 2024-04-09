@@ -691,6 +691,46 @@ h6 {
   pointer-events: none;
 }
 
+.no-webp .stores{
+  background: url("../img/main/stores/Rectangle 6.png") no-repeat center/cover; }
+
+.stores__container {
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.stores__title {
+  margin-bottom: 0.9375rem;
+  font-weight: 400;
+  font-size: 1.3125rem;
+  line-height: 1.380952381;
+}
+
+.stores__main-title {
+  color: #ffffff;
+  margin-bottom: 2.8125rem;
+  font-weight: 700;
+  font-size: 1.875rem;
+}
+
+.stores__text {
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.3888888889;
+  max-width: 45.625rem;
+  margin: 0 auto 3.75rem auto;
+}
+
+.stores__button {
+  border: 1px solid #333333;
+  padding: 15px 35px;
+  display: inline-block;
+  background-color: #fff;
+  color: #333333;
+}
+
 @media (min-width: 61.99875em) {
   ._header-scroll .header__title {
     padding: 39.0625rem 0rem 0rem 0rem;
@@ -967,6 +1007,15 @@ h6 {
         -ms-transform: translate(-50%, 50%);
             transform: translate(-50%, 50%);
   }
+
+  .stores__container {
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
+  }
+
+  .stores__text {
+    margin: 0 auto 2.5rem auto;
+  }
 }
 
 @media (max-width: 29.99875em) {
@@ -1042,3 +1091,5 @@ h6 {
 }
 
 .webp .header{ background: url(../img/main/bg.webp) no-repeat center/cover; }
+
+.webp .stores{ background: url("../img/main/stores/Rectangle 6.png") no-repeat center/cover; }

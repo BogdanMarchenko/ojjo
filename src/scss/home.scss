@@ -4,7 +4,12 @@
 
 	&__events {
 	}
+	// .page__stores
+
+	&__stores {
+	}
 }
+//====================================================================================================
 
 .events {
 	// .events__container
@@ -173,3 +178,61 @@
 }
 
 //====================================================================================================
+
+.stores {
+	background: url("../img/main/stores/Rectangle 6.png") no-repeat center / cover;
+
+	// .stores__container
+
+	&__container {
+		padding-top: rem(100);
+		padding-bottom: rem(100);
+		color: #ffffff;
+		text-align: center;
+		@media (max-width: $mobile) {
+			padding-top: rem(50);
+			padding-bottom: rem(50);
+		}
+	}
+
+	// .stores__title
+
+	&__title {
+		margin-bottom: rem(15);
+		font-weight: 400;
+		font-size: rem(21);
+		line-height: math.div(29, 21);
+	}
+
+	// .stores__main-title
+
+	&__main-title {
+		color: #ffffff;
+		margin-bottom: rem(45);
+		font-weight: 700;
+		font-size: rem(30);
+	}
+
+	// .stores__text
+
+	&__text {
+		font-weight: 400;
+		font-size: rem(18);
+		line-height: math.div(25, 18);
+		max-width: rem(730);
+		margin: 0 auto rem(60) auto;
+		@media (max-width: $mobile) {
+			margin: 0 auto rem(40) auto;
+		}
+	}
+
+	// .stores__button
+
+	&__button {
+		border: 1px solid $mainColor;
+		padding: 15px 35px;
+		display: inline-block;
+		background-color: #fff;
+		color: $mainColor;
+	}
+}
