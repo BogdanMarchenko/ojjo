@@ -1,4 +1,9 @@
 // Заголовки, общие БЄМ блоки и проче...
+.top-title {
+	font-weight: 400;
+	font-size: rem(21);
+	line-height: math.div(29, 21);
+}
 .section-title {
 	// font-family: $secondFamily;
 	font-weight: 800;
@@ -10,6 +15,8 @@
 	@media (max-width: $mobileSmall) {
 		font-size: rem(21);
 	}
+}
+.input {
 }
 
 .button {

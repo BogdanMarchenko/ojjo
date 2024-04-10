@@ -5,8 +5,16 @@
 @font-face {
   font-family: Gilroy;
   font-display: swap;
-  src: url("../fonts/Gilroy-ExtraBold.woff2") format("woff2"), url("../fonts/Gilroy-ExtraBold.woff") format("woff");
-  font-weight: 800;
+  src: url("../fonts/Gilroy-Light.woff2") format("woff2"), url("../fonts/Gilroy-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: icomoon;
+  font-display: swap;
+  src: url("../fonts/icomoon-arrow.woff2") format("woff2"), url("../fonts/icomoon-arrow.woff") format("woff");
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -21,8 +29,8 @@
 @font-face {
   font-family: Gilroy;
   font-display: swap;
-  src: url("../fonts/Gilroy-Light.woff2") format("woff2"), url("../fonts/Gilroy-Light.woff") format("woff");
-  font-weight: 300;
+  src: url("../fonts/Gilroy-ExtraBold.woff2") format("woff2"), url("../fonts/Gilroy-ExtraBold.woff") format("woff");
+  font-weight: 800;
   font-style: normal;
 }
 
@@ -270,6 +278,12 @@ h6 {
 [class*=-ibg_contain] img {
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.top-title {
+  font-weight: 400;
+  font-size: 1.3125rem;
+  line-height: 1.380952381;
 }
 
 .section-title {
@@ -692,7 +706,7 @@ h6 {
 }
 
 .no-webp .stores{
-  background: url("../img/main/stores/Rectangle 6.png") no-repeat center/cover; }
+  background: url("../img/main/bg/Rectangle 6.png") no-repeat center/cover; }
 
 .stores__container {
   padding-top: 6.25rem;
@@ -703,9 +717,6 @@ h6 {
 
 .stores__title {
   margin-bottom: 0.9375rem;
-  font-weight: 400;
-  font-size: 1.3125rem;
-  line-height: 1.380952381;
 }
 
 .stores__main-title {
@@ -738,9 +749,6 @@ h6 {
 }
 
 .articals__title {
-  font-weight: 400;
-  font-size: 1.3125rem;
-  line-height: 1.380952381;
   text-align: center;
   margin-bottom: 0.9375rem;
 }
@@ -799,6 +807,146 @@ h6 {
   padding: 15px 35px;
   display: inline-block;
   color: #ffffff;
+}
+
+.no-webp .mailing{
+  background: url("../img/main/bg/Rectangle 6.png") no-repeat center/cover; }
+
+.mailing {
+  color: #ffffff;
+}
+
+.mailing__container {
+  padding-top: 6.25rem;
+  padding-bottom: 7.8125rem;
+}
+
+.mailing__title {
+  text-align: center;
+  margin-bottom: 0.9375rem;
+}
+
+.mailing__main-title {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 3.75rem;
+}
+
+.mailing__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mailing__list {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 45%;
+          flex: 0 1 45%;
+}
+
+.mailing__list:not(:last-child) {
+  margin-bottom: 0.9375rem;
+}
+
+.mailing__item {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mailing__svg {
+  fill: #fff;
+  position: absolute;
+  width: 1.0625rem;
+  height: 1.0625rem;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+}
+
+.mailing__link {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.3888888889;
+}
+
+.mailing__link::before {
+  content: "\e903";
+  font-family: "icomoon" !important;
+  font-size: 1.0625rem;
+  margin-right: 0.875rem;
+}
+
+.mailing__form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  border: 0.0625rem solid #fff;
+  padding: 0.875rem 0.9375rem;
+}
+
+.mailing__form-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1.25rem 1.375rem;
+  background-color: #fff;
+  -webkit-column-gap: 0.9375rem;
+     -moz-column-gap: 0.9375rem;
+          column-gap: 0.9375rem;
+}
+
+.mailing__input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  border: 1px solid #d6d6d6;
+  padding-left: 2.625rem;
+}
+
+.mailing__input::-webkit-input-placeholder {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(51, 51, 51, 0.5);
+}
+
+.mailing__input::-moz-placeholder {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(51, 51, 51, 0.5);
+}
+
+.mailing__input:-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(51, 51, 51, 0.5);
+}
+
+.mailing__input::-ms-input-placeholder {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(51, 51, 51, 0.5);
+}
+
+.mailing__input::placeholder {
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(51, 51, 51, 0.5);
 }
 
 .swiper {
@@ -1095,6 +1243,10 @@ h6 {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.25rem;
   }
+
+  .mailing__body {
+    display: block;
+  }
 }
 
 @media (max-width: 47.99875em) {
@@ -1145,6 +1297,30 @@ h6 {
         -ms-transform: translate(-50%, 50%);
             transform: translate(-50%, 50%);
   }
+
+  .mailing__container {
+    padding-top: 3.125rem;
+    padding-bottom: 4.0625rem;
+  }
+
+  .mailing__form-block {
+    padding: 0;
+    -webkit-column-gap: 0.625rem;
+       -moz-column-gap: 0.625rem;
+            column-gap: 0.625rem;
+  }
+
+  .mailing__button {
+    display: inline-block;
+    padding: 0.9375rem 0.9375rem;
+    border: 1px solid #ffffff;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #333333;
+  }
 }
 
 @media (max-width: 29.99875em) {
@@ -1166,6 +1342,20 @@ h6 {
 
   .articals__slide-text {
     font-size: 1.125rem;
+  }
+
+  .mailing__form-block {
+    padding: 0.625rem 0.625rem;
+  }
+
+  .mailing__input {
+    padding-left: 0.625rem;
+    width: 100%;
+  }
+
+  .mailing__button {
+    font-size: 0.75rem;
+    padding: 0.625rem 0.625rem;
   }
 }
 
@@ -1240,4 +1430,6 @@ h6 {
 
 .webp .header{ background: url(../img/main/bg.webp) no-repeat center/cover; }
 
-.webp .stores{ background: url("../img/main/stores/Rectangle 6.png") no-repeat center/cover; }
+.webp .stores{ background: url("../img/main/bg/Rectangle 6.png") no-repeat center/cover; }
+
+.webp .mailing{ background: url("../img/main/bg/Rectangle 6.png") no-repeat center/cover; }

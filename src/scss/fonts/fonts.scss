@@ -1,8 +1,15 @@
 @font-face {
 	font-family: Gilroy;
 	font-display: swap;
-	src: url("../fonts/Gilroy-ExtraBold.woff2") format("woff2"), url("../fonts/Gilroy-ExtraBold.woff") format("woff");
-	font-weight: 800;
+	src: url("../fonts/Gilroy-Light.woff2") format("woff2"), url("../fonts/Gilroy-Light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: icomoon;
+	font-display: swap;
+	src: url("../fonts/icomoon-arrow.woff2") format("woff2"), url("../fonts/icomoon-arrow.woff") format("woff");
+	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
@@ -15,7 +22,7 @@
 @font-face {
 	font-family: Gilroy;
 	font-display: swap;
-	src: url("../fonts/Gilroy-Light.woff2") format("woff2"), url("../fonts/Gilroy-Light.woff") format("woff");
-	font-weight: 300;
+	src: url("../fonts/Gilroy-ExtraBold.woff2") format("woff2"), url("../fonts/Gilroy-ExtraBold.woff") format("woff");
+	font-weight: 800;
 	font-style: normal;
 }
