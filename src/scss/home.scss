@@ -80,9 +80,16 @@
 		padding: rem(17) rem(0);
 		color: $mainColor;
 		border: rem(1) solid $grey;
+		@media (any-hover: hover) {
+			&:hover {
+				border: rem(1) solid goldenrod;
+				color: goldenrod;
+			}
+		}
 		&._tab-active {
 			color: gold;
 			background-color: $mainColor;
+			border: rem(1) solid $mainColor;
 		}
 		@media (max-width: $tablet) {
 			padding: rem(5) rem(0);
@@ -241,9 +248,7 @@
 		color: $mainColor;
 		@media (any-hover: hover) {
 			&:hover {
-				color: goldenrod;
 				background-color: $mainColor;
-				border: 1px solid goldenrod;
 			}
 		}
 	}
@@ -360,12 +365,6 @@
 		padding: 15px 35px;
 		display: inline-block;
 		color: #ffffff;
-		@media (any-hover: hover) {
-			&:hover {
-				color: goldenrod;
-				border: 1px solid goldenrod;
-			}
-		}
 	}
 }
 //====================================================================================================
