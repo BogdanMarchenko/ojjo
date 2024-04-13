@@ -46,12 +46,12 @@
 		margin-bottom: rem(30);
 		&:hover {
 			color: goldenrod;
-			border-bottom: rem(1) solid goldenrod;
+			border-bottom: 1px solid goldenrod;
 		}
 		@media (any-hover: hover) {
 			&:hover {
 				color: goldenrod;
-				border-bottom: rem(1) solid goldenrod;
+				border-bottom: 1px solid goldenrod;
 			}
 		}
 		@media (max-width: $mobile) {
@@ -85,10 +85,10 @@
 		font-weight: 400;
 		font-size: rem(14);
 		line-height: math.div(21, 14);
-		border-bottom: rem(1) solid transparent;
+		border-bottom: 1px solid transparent;
 		&:hover {
 			color: goldenrod;
-			border-bottom: rem(1) solid goldenrod;
+			border-bottom: 1px solid goldenrod;
 		}
 	}
 }
@@ -99,11 +99,11 @@
 		margin-bottom: rem(30);
 		&:hover {
 			color: goldenrod;
-			border-bottom: rem(1) solid goldenrod;
+			border-bottom: 1px solid goldenrod;
 		}
 		&:hover {
 			color: goldenrod;
-			border-bottom: rem(1) solid goldenrod;
+			border-bottom: 1px solid goldenrod;
 		}
 		@media (max-width: $mobile) {
 			margin-bottom: rem(15);
@@ -149,7 +149,7 @@
 		margin-bottom: rem(30);
 		&:hover {
 			color: goldenrod;
-			border-bottom: rem(1) solid goldenrod;
+			border-bottom: 1px solid goldenrod;
 		}
 		@media (max-width: $mobile) {
 			margin-bottom: rem(15);
@@ -179,10 +179,10 @@
 		font-weight: 400;
 		font-size: rem(14);
 		line-height: math.div(21, 14);
-		border-bottom: rem(1) solid transparent;
+		border-bottom: 1px solid transparent;
 		&:hover {
 			color: goldenrod;
-			border-bottom: rem(1) solid goldenrod;
+			border-bottom: 1px solid goldenrod;
 		}
 	}
 }
@@ -193,7 +193,7 @@
 		margin-bottom: rem(30);
 		&:hover {
 			color: goldenrod;
-			border-bottom: rem(1) solid goldenrod;
+			border-bottom: 1px solid goldenrod;
 		}
 		@media (max-width: $mobile) {
 			margin-bottom: rem(15);
@@ -305,10 +305,10 @@
 		font-weight: 400;
 		line-height: math.div(21, 14);
 		font-size: rem(14);
-		border-bottom: rem(1) solid transparent;
+		border-bottom: 1px solid transparent;
 		&:hover {
 			color: goldenrod;
-			border-bottom: rem(1) solid goldenrod;
+			border-bottom: 1px solid goldenrod;
 		}
 	}
 }
