@@ -63,7 +63,7 @@
 			&:hover {
 				background-color: $mainColor;
 				color: goldenrod;
-				border: rem(1) solid goldenrod;
+				border: 1px solid goldenrod;
 			}
 		}
 	}
@@ -217,11 +217,11 @@
 
 	&__link {
 		display: inline-block;
-		border: rem(1) solid transparent;
+		border: 1px solid transparent;
 		padding: rem(0) rem(3);
 		@media (any-hover: hover) {
 			&:hover {
-				border-bottom: rem(1) solid goldenrod;
+				border-bottom: 1px solid goldenrod;
 				color: goldenrod;
 			}
 		}
@@ -233,7 +233,7 @@
 			width: 100%;
 			&:active {
 				color: goldenrod;
-				border-bottom: rem(1) solid goldenrod;
+				border-bottom: 1px solid goldenrod;
 			}
 		}
 	}
@@ -332,7 +332,7 @@
 
 	&__text-link {
 		display: inline-block;
-		border: rem(1) solid transparent;
+		border: 1px solid transparent;
 		margin-right: rem(40);
 		@media (any-hover: hover) {
 			&:hover {
@@ -352,7 +352,7 @@
 			width: 100%;
 			&:active {
 				color: goldenrod;
-				border-bottom: rem(1) solid goldenrod;
+				border-bottom: 1px solid goldenrod;
 			}
 		}
 	}
@@ -362,8 +362,8 @@
 		column-gap: rem(25);
 		@media (max-width: $tablet) {
 			justify-content: start;
-			border-top: rem(1) solid #ffffff;
-			border-bottom: rem(1) solid #ffffff;
+			border-top: 1px solid #ffffff;
+			border-bottom: 1px solid #ffffff;
 			max-width: rem(490);
 			padding: rem(30) 0;
 			column-gap: rem(35);
@@ -404,7 +404,7 @@
 .sub-part {
 	// .sub-part__container
 	position: relative;
-	border-top: rem(1) solid #ffffff;
+	border-top: 1px solid #ffffff;
 
 	&__container {
 	}
@@ -422,7 +422,7 @@
 		flex: 1 1 auto;
 		text-align: center;
 		&:not(:last-child) {
-			border-right: rem(1) solid #ffffff;
+			border-right: 1px solid #ffffff;
 		}
 		& > img {
 			display: inline-block;

@@ -487,7 +487,7 @@ h6 {
 
 .menu__link {
   display: inline-block;
-  border: 0.0625rem solid transparent;
+  border: 1px solid transparent;
   padding: 0rem 0.1875rem;
 }
 
@@ -586,7 +586,7 @@ h6 {
 
 .login__text-link {
   display: inline-block;
-  border: 0.0625rem solid transparent;
+  border: 1px solid transparent;
   margin-right: 2.5rem;
 }
 
@@ -611,7 +611,7 @@ h6 {
 
 .sub-part {
   position: relative;
-  border-top: 0.0625rem solid #ffffff;
+  border-top: 1px solid #ffffff;
 }
 
 .sub-part__list {
@@ -629,7 +629,7 @@ h6 {
 }
 
 .sub-part__item:not(:last-child) {
-  border-right: 0.0625rem solid #ffffff;
+  border-right: 1px solid #ffffff;
 }
 
 .sub-part__item > img {
@@ -661,7 +661,7 @@ h6 {
 
 .usefullink-list__title:hover {
   color: goldenrod;
-  border-bottom: 0.0625rem solid goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
 
 .usefullink-list__item:not(:last-child) {
@@ -672,12 +672,12 @@ h6 {
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-bottom: 0.0625rem solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .usefullink-list__link:hover {
   color: goldenrod;
-  border-bottom: 0.0625rem solid goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
 
 .payment-list__title {
@@ -686,12 +686,12 @@ h6 {
 
 .payment-list__title:hover {
   color: goldenrod;
-  border-bottom: 0.0625rem solid goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
 
 .payment-list__title:hover {
   color: goldenrod;
-  border-bottom: 0.0625rem solid goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
 
 .payment-list__item {
@@ -718,7 +718,7 @@ h6 {
 
 .contacts-list__title:hover {
   color: goldenrod;
-  border-bottom: 0.0625rem solid goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
 
 .contacts-list__item:not(:last-child) {
@@ -729,12 +729,12 @@ h6 {
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-bottom: 0.0625rem solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .contacts-list__link:hover {
   color: goldenrod;
-  border-bottom: 0.0625rem solid goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
 
 .socials-list__title {
@@ -743,7 +743,7 @@ h6 {
 
 .socials-list__title:hover {
   color: goldenrod;
-  border-bottom: 0.0625rem solid goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
 
 .socials-list__item {
@@ -814,12 +814,12 @@ h6 {
   font-weight: 400;
   line-height: 1.5;
   font-size: 0.875rem;
-  border-bottom: 0.0625rem solid transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .copy__link:hover {
   color: goldenrod;
-  border-bottom: 0.0625rem solid goldenrod;
+  border-bottom: 1px solid goldenrod;
 }
 
 .events__container {
@@ -852,13 +852,13 @@ h6 {
   text-align: center;
   padding: 1.0625rem 0rem;
   color: #333333;
-  border: 0.0625rem solid #d6d6d6;
+  border: 1px solid #d6d6d6;
 }
 
 .tabs-events__title._tab-active {
   color: gold;
   background-color: #333333;
-  border: 0.0625rem solid #333333;
+  border: 1px solid #333333;
 }
 
 .tabs-events__items {
@@ -1123,7 +1123,7 @@ h6 {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  border: 0.0625rem solid #fff;
+  border: 1px solid #fff;
   padding: 0.875rem 0.9375rem;
 }
 
@@ -1337,7 +1337,7 @@ h6 {
 
   .menu__link:active {
     color: goldenrod;
-    border-bottom: 0.0625rem solid goldenrod;
+    border-bottom: 1px solid goldenrod;
   }
 
   .menu__logo {
@@ -1370,15 +1370,15 @@ h6 {
 
   .login__text-link:active {
     color: goldenrod;
-    border-bottom: 0.0625rem solid goldenrod;
+    border-bottom: 1px solid goldenrod;
   }
 
   .login__actions {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: start;
-    border-top: 0.0625rem solid #ffffff;
-    border-bottom: 0.0625rem solid #ffffff;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
     max-width: 30.625rem;
     padding: 1.875rem 0;
     -webkit-column-gap: 2.1875rem;
@@ -1755,11 +1755,11 @@ h6 {
   .header__button-link:hover {
     background-color: #333333;
     color: goldenrod;
-    border: 0.0625rem solid goldenrod;
+    border: 1px solid goldenrod;
   }
 
   .menu__link:hover {
-    border-bottom: 0.0625rem solid goldenrod;
+    border-bottom: 1px solid goldenrod;
     color: goldenrod;
   }
 
@@ -1786,11 +1786,11 @@ h6 {
 
   .usefullink-list__title:hover {
     color: goldenrod;
-    border-bottom: 0.0625rem solid goldenrod;
+    border-bottom: 1px solid goldenrod;
   }
 
   .tabs-events__title:hover {
-    border: 0.0625rem solid goldenrod;
+    border: 1px solid goldenrod;
     color: goldenrod;
   }
 

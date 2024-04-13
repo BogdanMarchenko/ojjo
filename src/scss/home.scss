@@ -83,17 +83,17 @@
 		text-align: center;
 		padding: rem(17) rem(0);
 		color: $mainColor;
-		border: rem(1) solid $grey;
+		border: 1px solid $grey;
 		@media (any-hover: hover) {
 			&:hover {
-				border: rem(1) solid goldenrod;
+				border: 1px solid goldenrod;
 				color: goldenrod;
 			}
 		}
 		&._tab-active {
 			color: gold;
 			background-color: $mainColor;
-			border: rem(1) solid $mainColor;
+			border: 1px solid $mainColor;
 		}
 		@media (max-width: $tablet) {
 			padding: rem(5) rem(0);
@@ -547,7 +547,7 @@
 
 	&__form {
 		flex: 1 1 auto;
-		border: rem(1) solid #fff;
+		border: 1px solid #fff;
 		padding: rem(14) rem(15);
 	}
 
