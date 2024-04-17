@@ -1,5 +1,9 @@
 //====================================================================================================
 .page {
+	// .page__main-title-block
+
+	&__main-title-block {
+	}
 	// .page__events
 
 	&__events {
@@ -23,6 +27,109 @@
 }
 //====================================================================================================
 
+.main-title-block {
+	background: url("../img/main/bg.png") no-repeat center / cover;
+	color: #ffffff;
+	position: relative;
+	&::before {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		display: block;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(51, 51, 51, 0.87);
+	}
+	// .main-title-block__container
+
+	&__container {
+		position: relative;
+		z-index: 2;
+	}
+
+	// .main-title-block__title
+
+	&__title {
+		padding: rem(600) rem(0) rem(0) rem(0);
+		font-family: "Noto Serif", sans-serif;
+		font-weight: 700;
+		font-size: rem(36);
+		text-align: center;
+		color: #ffffff;
+		text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+		line-height: math.div(49, 36);
+		margin-bottom: rem(50);
+		@media (min-width: $tablet) {
+			._header-scroll & {
+				padding: rem(625) rem(0) rem(0) rem(0);
+			}
+		}
+		@media (max-width: $tablet) {
+			padding: rem(322) rem(0) rem(0) rem(0);
+		}
+	}
+
+	// .main-title-block__button
+
+	&__button {
+		margin-bottom: rem(110);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	// .main-title-block__button-link
+
+	&__button-link {
+		background-color: $mainColor;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: $mainColor;
+				color: goldenrod;
+				border: 1px solid goldenrod;
+			}
+		}
+	}
+
+	// .main-title-block__sub-part
+
+	&__sub-part {
+	}
+}
+
+.sub-part {
+	// .sub-part__container
+	position: relative;
+	border-top: 1px solid #ffffff;
+
+	&__container {
+	}
+
+	// .sub-part__list
+
+	&__list {
+		display: flex;
+		padding: rem(30) rem(0);
+	}
+
+	// .sub-part__item
+
+	&__item {
+		flex: 1 1 auto;
+		text-align: center;
+		&:not(:last-child) {
+			border-right: 1px solid #ffffff;
+		}
+		& > img {
+			display: inline-block;
+			width: 100%;
+		}
+	}
+}
+
+//====================================================================================================
 .events {
 	// .events__container
 	&__container {

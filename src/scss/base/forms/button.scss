@@ -2,11 +2,23 @@
 // Снипет (HTML): btn
 
 .button {
-	display: inline-flex;
-	padding: 0px 0px;
+	display: inline-block;
+	padding: rem(15) rem(35);
+	border: 1px solid #ffffff;
+	font-weight: 500;
+	font-size: rem(18);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	text-align: center;
+	background-color: $mainColor;
 	@media (any-hover: hover) {
 		&:hover {
+			color: goldenrod;
+			border: 1px solid goldenrod;
 		}
+	}
+	&_white {
+		background-color: #fff;
 	}
 	&._fw {
 		width: 100%;
