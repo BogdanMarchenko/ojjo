@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Products"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page">
+			<section class="page__products products">
+				<div class="products__container">
+					<div class="products__selects">
+						<select name="form[]" class="form" title="brand">
+							<option selected value="none">Brand</option>
+							<option value="dolchegabana">Dolce & Gabanna</option>
+							<option value="tiffany">Tiffany & Co.</option>
+							<option value="cartier">Cartier</option>
+							<option value="bulgari">Bulgari</option>
+							<option value="chopard">Chopard</option>
+							<option value="harry-winston">Harry Winston</option>
+							<option value="van-cleef-arpels">Van Cleef & Arpels</option>
+							<option value="piaget">Piaget</option>
+							<option value="boucheron">Boucheron</option>
+						</select>
+						<select name="form[]" class="form" title="price">
+							<option selected value="none">Price</option>
+							<option value="100">$100 or less</option>
+							<option value="500">$101 - $500</option>
+							<option value="1000">$501 - $1000</option>
+							<option value="1500">$1001 - $1500</option>
+							<option value="2000">$1501 - $2000</option>
+							<option value="3000">$2001 - $3000</option>
+							<option value="4000">$3001 - $4000</option>
+							<option value="5000">$4001 - $5000</option>
+							<option value="7500">$5001 - $7500</option>
+							<option value="10000">More than $7500</option>
+						</select>
+						<select name="form[]" class="form" title="target">
+							<option selected value="none">Audience</option>
+							<option value="weddings">For weddings</option>
+							<option value="everyday_wear">For everyday wear</option>
+							<option value="parties_events">For parties and events</option>
+							<option value="professional_events">For professional events</option>
+							<option value="gifts">For gifts</option>
+							<option value="sports_events">For sports events</option>
+							<option value="travel">For travel</option>
+							<option value="formal_occasions">For formal occasions</option>
+						</select>
+						<select name="form[]" class="form" title="Collection">
+							<option selected value="none">Collections</option>
+							<option value="vintage">Vintage Collection</option>
+							<option value="modern">Modern Collection</option>
+							<option value="classic">Classic Collection</option>
+							<option value="bohemian">Bohemian Collection</option>
+							<option value="luxury">Luxury Collection</option>
+							<option value="artisan">Artisan Collection</option>
+							<option value="minimalist">Minimalist Collection</option>
+							<option value="ethnic">Ethnic Collection</option>
+						</select>
+						<select name="form[]" class="form" title="season">
+							<option selected value="none">Season</option>
+							<option value="spring">Spring</option>
+							<option value="summer">Summer</option>
+							<option value="autumn">Autumn</option>
+							<option value="winter">Winter</option>
+						</select>
+						<select name="form[]" class="form" title="event">
+							<option selected value="none">Event</option>
+							<option value="wedding">Wedding</option>
+							<option value="birthday">Birthday</option>
+							<option value="anniversary">Anniversary</option>
+							<option value="graduation">Graduation</option>
+							<option value="prom">Prom</option>
+							<option value="engagement">Engagement</option>
+							<option value="holiday">Holiday</option>
+							<option value="red_carpet">Red Carpet Event</option>
+						</select>
+					</div>
+					<div class="products__items">
+						<!-- для коректной работы добавления товара в корзину нам нужно как-то уникализировать каждый товар, для этого
+								добавляем атрибут data-pid='' (то есть product id) и номер! -->
+						<article data-pid="1" class="products__item item-product">
+							<div class="item-product__labels">
+								<div class="item-product__label item-product__label_sale">
+									-25%
+								</div>
+								<div class="item-product__label item-product__label_new">
+									New
+								</div>
+							</div>
+							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
+									alt="product-image">
+							</a>
+							<div class="item-product__body">
+								<div class="item-product__content">
+									<h5 class="item-product__title">Suspension</h5>
+									<h4 class="item-product__brand">Dolce & Gabanna</h4>
+								</div>
+								<div class="item-product__prices">
+									<div class="item-product__price">1 000$</div>
+									<div class="item-product__price item-product__price_old">1 300$</div>
+								</div>
+								<div class="item-product__actions actions-product">
+									<div class="actions-product__body">
+										<a href="" class="actions-product__button button button_white">Buy</a>
+										<a href="" class="actions-product__link icon-3">Like</a>
+										<a href="" class="actions-product__link icon-3">Share</a>
+									</div>
+								</div>
+							</div>
+						</article>
+						<article data-pid="2" class="products__item item-product">
+							<div class="item-product__labels">
+								<!-- <div class="item-product__label item-product__label_sale">
+									-30%
+								</div> -->
+								<div class="item-product__label item-product__label_new">
+									New
+								</div>
+							</div>
+							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
+									alt="product-image">
+							</a>
+							<div class="item-product__body">
+								<div class="item-product__content">
+									<h5 class="item-product__title">Suspension</h5>
+									<h4 class="item-product__brand">Dolce & Gabanna</h4>
+								</div>
+								<div class="item-product__prices">
+									<div class="item-product__price">1 000$</div>
+									<div class="item-product__price item-product__price_old">1 300$</div>
+								</div>
+								<div class="item-product__actions actions-product">
+									<div class="actions-product__body">
+										<a href="" class="actions-product__button button button_white">Buy</a>
+										<a href="" class="actions-product__link icon-3">Like</a>
+										<a href="" class="actions-product__link icon-3">Share</a>
+									</div>
+								</div>
+							</div>
+						</article>
+						<article data-pid="3" class="products__item item-product">
+							<div class="item-product__labels">
+								<div class="item-product__label item-product__label_sale">
+									-30%
+								</div>
+								<div class="item-product__label item-product__label_new">
+									New
+								</div>
+							</div>
+							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
+									alt="product-image">
+							</a>
+							<div class="item-product__body">
+								<div class="item-product__content">
+									<h5 class="item-product__title">Suspension</h5>
+									<h4 class="item-product__brand">Dolce & Gabanna</h4>
+								</div>
+								<div class="item-product__prices">
+									<div class="item-product__price">1 000$</div>
+									<div class="item-product__price item-product__price_old">1 300$</div>
+								</div>
+								<div class="item-product__actions actions-product">
+									<div class="actions-product__body">
+										<a href="" class="actions-product__button button button_white">Buy</a>
+										<a href="" class="actions-product__link icon-3">Like</a>
+										<a href="" class="actions-product__link icon-3">Share</a>
+									</div>
+								</div>
+							</div>
+						</article>
+						<article data-pid="4" class="products__item item-product">
+							<div class="item-product__labels">
+								<div class="item-product__label item-product__label_sale">
+									-30%
+								</div>
+								<div class="item-product__label item-product__label_new">
+									New
+								</div>
+							</div>
+							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
+									alt="product-image">
+							</a>
+							<div class="item-product__body">
+								<div class="item-product__content">
+									<h5 class="item-product__title">Suspension</h5>
+									<h4 class="item-product__brand">Dolce & Gabanna</h4>
+								</div>
+								<div class="item-product__prices">
+									<div class="item-product__price">1 000$</div>
+									<div class="item-product__price item-product__price_old">1 300$</div>
+								</div>
+								<div class="item-product__actions actions-product">
+									<div class="actions-product__body">
+										<a href="" class="actions-product__button button button_white">Buy</a>
+										<a href="" class="actions-product__link icon-3">Like</a>
+										<a href="" class="actions-product__link icon-3">Share</a>
+									</div>
+								</div>
+							</div>
+						</article>
+						<article data-pid="5" class="products__item item-product">
+							<div class="item-product__labels">
+								<div class="item-product__label item-product__label_sale">
+									-30%
+								</div>
+								<div class="item-product__label item-product__label_new">
+									New
+								</div>
+							</div>
+							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
+									alt="product-image">
+							</a>
+							<div class="item-product__body">
+								<div class="item-product__content">
+									<h5 class="item-product__title">Suspension</h5>
+									<h4 class="item-product__brand">Dolce & Gabanna</h4>
+								</div>
+								<div class="item-product__prices">
+									<div class="item-product__price">1 000$</div>
+									<div class="item-product__price item-product__price_old">1 300$</div>
+								</div>
+								<div class="item-product__actions actions-product">
+									<div class="actions-product__body">
+										<a href="" class="actions-product__button button button_white">Buy</a>
+										<a href="" class="actions-product__link icon-3">Like</a>
+										<a href="" class="actions-product__link icon-3">Share</a>
+									</div>
+								</div>
+							</div>
+						</article>
+						<article data-pid="6" class="products__item item-product">
+							<div class="item-product__labels">
+								<div class="item-product__label item-product__label_sale">
+									-30%
+								</div>
+								<div class="item-product__label item-product__label_new">
+									New
+								</div>
+							</div>
+							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
+									alt="product-image">
+							</a>
+							<div class="item-product__body">
+								<div class="item-product__content">
+									<h5 class="item-product__title">Suspension</h5>
+									<h4 class="item-product__brand">Dolce & Gabanna</h4>
+								</div>
+								<div class="item-product__prices">
+									<div class="item-product__price">1 000$</div>
+									<div class="item-product__price item-product__price_old">1 300$</div>
+								</div>
+								<div class="item-product__actions actions-product">
+									<div class="actions-product__body">
+										<a href="" class="actions-product__button button button_white">Buy</a>
+										<a href="" class="actions-product__link icon-3">Like</a>
+										<a href="" class="actions-product__link icon-3">Share</a>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+					<div class="products__footer">
+						<a href="" class="products__more button">Show more</a>
+					</div>
+				</div>
+			</section>
+			<section class="page__mailing mailing">
+				<div class="mailing__container">
+					<h5 class="mailing__title top-title">Useful tips and personal offers</h5>
+					<h2 class="mailing__main-title section-title">Exclusive mailing</h2>
+					<div class="mailing__body">
+						<ul class="mailing__list">
+							<li class="mailing__item">
+								<a href="" class="mailing__link">Personal manager</a>
+							</li>
+							<li class="mailing__item"><a href="" class="mailing__link">Delivery and design</a></li>
+							<li class="mailing__item"><a href="" class="mailing__link">Individual design</a></li>
+						</ul>
+						<form action="#" class="mailing__form">
+							<div class="mailing__form-block">
+								<input autocomplete="off" type="email" name="form[]" data-error="Ошибка"
+									placeholder="Your email" class="mailing__input input">
+								<button type="submit" class="mailing__button button">Send</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+
+</html>

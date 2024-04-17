@@ -1,0 +1,50 @@
+{
+	"products": [
+		{
+		"id": 7,
+		"url": "#",
+		"title": "Suspension",
+		"brand": "Dolce & Gabana",
+		"labels": "",
+		"image": "product1.jpg",
+		"price": "1 000",
+		"priceOld": "1 300",
+		"shareUrl": "",	
+		"likeUrl": ""
+		},
+		{
+		"id": 8,
+		"url": "#",
+		"title": "Suspension",
+		"brand": "Dolce & Gabana",
+		"labels": [
+			{
+				"type": "sale",
+				"value": "-70%"
+			},
+			{
+				"type": "new",
+				"value": "New"
+
+			}
+		],
+		"image": "product1.jpg",
+		"price": "1 300",
+		"priceOld": "1 500",
+		"shareUrl": "",	
+		"likeUrl": ""
+		},
+		{
+			"id": 9,
+			"url": "#",
+			"title": "Suspension",
+			"brand": "Dolce & Gabana",
+			"labels": "",
+			"image": "product1.jpg",
+			"price": "1 400",
+			"priceOld": "1 800",
+			"shareUrl": "",	
+			"likeUrl": ""
+		}
+	]
+}

@@ -2,6 +2,9 @@
 // Снипет (HTML): sel
 .select {
 	position: relative;
+	height: rem(34);
+	width: 100%;
+
 	// .select__body
 	&__body {
 		position: relative;
@@ -10,7 +13,7 @@
 	&__title {
 		color: inherit;
 		text-align: left;
-		border: 1px solid #d9d9d9;
+		border-bottom: 1px solid #d9d9d9;
 		background-color: #fff;
 		cursor: pointer;
 		width: 100%;
@@ -19,23 +22,30 @@
 	// .select__value
 	&__value {
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		height: rem(30);
-		padding: 0 rem(15);
 		gap: rem(10);
+		font-weight: 400;
+		font-size: rem(16);
+		line-height: 150%;
+		color: $mainColor;
 		> * {
 			flex: 1 1 auto;
 		}
 		&:after {
-			content: "";
-			align-self: stretch;
+			font-family: "icomoon" !important;
+			content: "\e903";
+			// align-self: stretch;
 			flex: 0 0 10px;
 			transition: all 0.3s ease 0s;
 			display: flex;
 			justify-content: center;
-			align-items: center;
+			align-items: flex-start;
+			transform: rotate(90deg);
+			font-size: rem(40);
+
 			._select-open & {
-				transform: rotate(-180deg);
+				transform: rotate(-330deg);
 			}
 		}
 		&._select-pseudo-label {

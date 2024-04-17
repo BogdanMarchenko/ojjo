@@ -1,18 +1,11 @@
 //====================================================================================================
 .header {
-	background: url("../img/main/bg.png") no-repeat center / cover;
 	color: #ffffff;
-	position: relative;
-
-	&::before {
-		position: absolute;
-		content: "";
-		display: block;
-		z-index: 2;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(51, 51, 51, 0.87);
-	}
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: rgba(51, 51, 51);
 
 	// .header__container
 
@@ -25,57 +18,6 @@
 
 	&__menu {
 	}
-	// .header__title
-
-	&__title {
-		padding: rem(523) rem(0) rem(0) rem(0);
-		font-family: "Noto Serif", sans-serif;
-		font-weight: 700;
-		font-size: rem(36);
-		text-align: center;
-		color: #ffffff;
-		text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-		line-height: math.div(49, 36);
-		margin-bottom: rem(50);
-		@media (min-width: $tablet) {
-			._header-scroll & {
-				padding: rem(625) rem(0) rem(0) rem(0);
-			}
-		}
-		@media (max-width: $tablet) {
-			padding: rem(322) rem(0) rem(0) rem(0);
-		}
-	}
-
-	// .header__button
-
-	&__button {
-		margin-bottom: rem(110);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	// .header__button-link
-
-	&__button-link {
-		background-color: $mainColor;
-		@media (any-hover: hover) {
-			&:hover {
-				background-color: $mainColor;
-				color: goldenrod;
-				border: 1px solid goldenrod;
-			}
-		}
-	}
-	// .header__sub-part
-
-	&__sub-part {
-		position: relative;
-		z-index: 2;
-		@media (max-width: $tablet) {
-			display: none;
-		}
-	}
 }
 
 .menu {
@@ -83,7 +25,6 @@
 	height: rem(102);
 	position: relative;
 	@media (max-width: $tablet) {
-		position: fixed;
 		z-index: 6;
 		top: 0;
 		left: 0;
@@ -91,7 +32,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: rem(0) rem(24);
+		padding: rem(0) rem(20);
 	}
 	&::before {
 		content: "";
@@ -112,6 +53,9 @@
 		z-index: 6;
 		top: 0;
 		transition: top 0.3s ease 0s;
+		@media (max-width: $tablet) {
+			padding: rem(0) rem(35);
+		}
 	}
 	._header-show &::before {
 		top: 0;
@@ -397,36 +341,6 @@
 		}
 		@media (max-width: $tablet) {
 			font-size: rem(33);
-		}
-	}
-}
-
-.sub-part {
-	// .sub-part__container
-	position: relative;
-	border-top: 1px solid #ffffff;
-
-	&__container {
-	}
-
-	// .sub-part__list
-
-	&__list {
-		display: flex;
-		padding: rem(30) rem(0);
-	}
-
-	// .sub-part__item
-
-	&__item {
-		flex: 1 1 auto;
-		text-align: center;
-		&:not(:last-child) {
-			border-right: 1px solid #ffffff;
-		}
-		& > img {
-			display: inline-block;
-			width: 100%;
 		}
 	}
 }

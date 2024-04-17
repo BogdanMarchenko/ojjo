@@ -314,3 +314,15 @@
 }
 
 //====================================================================================================
+.footer-list-title {
+	border-bottom: 1px solid $mainColor;
+	display: block;
+	font-weight: 500;
+	font-size: rem(18);
+	line-height: math.div(25, 18);
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: $mainColor;
+}
+
+//====================================================================================================
