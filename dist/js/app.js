@@ -4019,15 +4019,22 @@
                     let result = await response.json();
                     loadProductsShowMore(result);
                     button.classList.remove("_hold");
-                    button.remove();
                 } else alert("Ошибка");
             }
         }
+        let count = 12;
         function loadProductsShowMore(data) {
             const productsItems = document.querySelector(".products__items");
-            let count = 7;
-            data.products.forEach((function(item, index) {
-                if (index < count) return;
+            productsItems.textContent = "";
+            let productsQuanity = document.querySelectorAll(".products__item");
+            console.log(productsQuanity);
+            for (let i = 0; i < data.products.length; i++) {
+                let item = data.products[i];
+                if (i === count) {
+                    count += 6;
+                    if (count > data.products.length) count = data.products.length;
+                    return;
+                }
                 const productId = item.id;
                 const productUrl = item.url;
                 const productImage = item.image;
@@ -4052,10 +4059,10 @@
                     productTemplateLabels += productTemplateLabelsContent;
                     productTemplateLabels += productTemplateLabelsEnd;
                 }
-                let productTemplateImage = `\n\t\t<a href="${productUrl}" class="item-product__image -ibg">\n\t\t\t<img src="img/products/${productImage}" alt="${productTitle}">\n\t\t</a>\n\t`;
+                let productTemplateImage = `\n\t\t\t<a href="${productUrl}" class="item-product__image -ibg">\n\t\t\t\t<img src="img/products/${productImage}" alt="${productTitle}">\n\t\t\t</a>\n\t\t`;
                 let productTemplateBodyStart = `<div class="item-product__body">`;
                 let productTemplateBodyEnd = `</div>`;
-                let productTemplateContent = `\n\t\t<div class="item-product__content">\n\t\t\t<h3 class="item-product__title">${productTitle}</h3>\n\t\t\t<div class="item-product__brand">${productBrand}</div>\n\t\t</div>\n\t`;
+                let productTemplateContent = `\n\t\t\t<div class="item-product__content">\n\t\t\t\t<h3 class="item-product__title">${productTitle}</h3>\n\t\t\t\t<div class="item-product__brand">${productBrand}</div>\n\t\t\t</div>\n\t\t`;
                 let productTemplatePrices = "";
                 let productTemplatePricesStart = `<div class="item-product__prices">`;
                 let productTemplatePricesCurrent = `<div class="item-product__price">${productPrice}$</div>`;
@@ -4065,7 +4072,7 @@
                 productTemplatePrices += productTemplatePricesCurrent;
                 if (productOldPrice) productTemplatePrices += productTemplatePricesOld;
                 productTemplatePrices += productTemplatePricesEnd;
-                let productTemplateActions = `\n\t\t<div class="item-product__actions actions-product">\n\t\t\t<div class="actions-product__body">\n\t\t\t\t<a href="" class="actions-product__button button button_white">Buy</a>\n\t\t\t\t<a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>\n\t\t\t\t<a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>\n\t\t\t</div>\n\t\t</div>\n\t`;
+                let productTemplateActions = `\n\t\t\t<div class="item-product__actions actions-product">\n\t\t\t\t<div class="actions-product__body">\n\t\t\t\t\t<a href="" class="actions-product__button button button_white">Buy</a>\n\t\t\t\t\t<a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>\n\t\t\t\t\t<a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t`;
                 let productTemplateBody = "";
                 productTemplateBody += productTemplateBodyStart;
                 productTemplateBody += productTemplateContent;
@@ -4079,7 +4086,7 @@
                 productTemplate += productTemplateBody;
                 productTemplate += productTemplateEnd;
                 productsItems.insertAdjacentHTML("beforeend", productTemplate);
-            }));
+            }
         }
     };
     window["FLS"] = true;

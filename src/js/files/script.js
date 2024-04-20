@@ -275,24 +275,32 @@ window.onload = function () {
 				loadProductsShowMore(result);
 				button.classList.remove('_hold');
 				//удаляем кнопку потому что тут фейковий запрос в реальном проекте в переменной file будет храниться реальний адрес некого сервера и тогда удалять кнопку не надо
-				button.remove();
+				// button.remove();
 			} else {
 				alert("Ошибка");
 			}
 		}
 	}
-
+	let count = 12;
 	// функция обработки json формата в html код product-item по кнопке Show more
 	function loadProductsShowMore(data) {
 		const productsItems = document.querySelector('.products__items');
+		productsItems.textContent = '';
 
-		// for (let i = 0; i > data.products.length; i++) {
+		let productsQuanity = document.querySelectorAll('.products__item');
+		console.log(productsQuanity);
 
-		// }
-		let count = 7;
+		for (let i = 0; i < data.products.length; i++) {
+			let item = data.products[i];
 
-		data.products.forEach(function (item, index) {
-			if (index < count) return;
+			if (i === count) {
+				count += 6;
+				if (count > data.products.length) {
+					count = data.products.length;
+				}
+				return;
+			}
+
 			const productId = item.id;
 			const productUrl = item.url;
 			const productImage = item.image;
@@ -323,20 +331,20 @@ window.onload = function () {
 			}
 
 			let productTemplateImage = `
-		<a href="${productUrl}" class="item-product__image -ibg">
-			<img src="img/products/${productImage}" alt="${productTitle}">
-		</a>
-	`;
+			<a href="${productUrl}" class="item-product__image -ibg">
+				<img src="img/products/${productImage}" alt="${productTitle}">
+			</a>
+		`;
 
 			let productTemplateBodyStart = `<div class="item-product__body">`;
 			let productTemplateBodyEnd = `</div>`;
 
 			let productTemplateContent = `
-		<div class="item-product__content">
-			<h3 class="item-product__title">${productTitle}</h3>
-			<div class="item-product__brand">${productBrand}</div>
-		</div>
-	`;
+			<div class="item-product__content">
+				<h3 class="item-product__title">${productTitle}</h3>
+				<div class="item-product__brand">${productBrand}</div>
+			</div>
+		`;
 
 			let productTemplatePrices = '';
 			let productTemplatePricesStart = `<div class="item-product__prices">`;
@@ -352,14 +360,14 @@ window.onload = function () {
 			productTemplatePrices += productTemplatePricesEnd;
 
 			let productTemplateActions = `
-		<div class="item-product__actions actions-product">
-			<div class="actions-product__body">
-				<a href="" class="actions-product__button button button_white">Buy</a>
-				<a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>
-				<a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>
+			<div class="item-product__actions actions-product">
+				<div class="actions-product__body">
+					<a href="" class="actions-product__button button button_white">Buy</a>
+					<a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>
+					<a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>
+				</div>
 			</div>
-		</div>
-	`;
+		`;
 
 			let productTemplateBody = '';
 			productTemplateBody += productTemplateBodyStart;
@@ -376,7 +384,103 @@ window.onload = function () {
 			productTemplate += productTemplateEnd;
 
 			productsItems.insertAdjacentHTML('beforeend', productTemplate);
-		});
+
+		}
+
+		// data.products.forEach(function (item, index) {
+		// 	console.log(count);
+		// 	console.log(index);
+		// 	if (index === count) {
+		// 		// count *= 2;
+		// 		return;
+		// 	} else {
+		// 		console.log('ok');
+		// 	}
+		// 	const productId = item.id;
+		// 	const productUrl = item.url;
+		// 	const productImage = item.image;
+		// 	const productTitle = item.title;
+		// 	const productBrand = item.brand;
+		// 	const productPrice = item.price;
+		// 	const productOldPrice = item.priceOld;
+		// 	const productShareUrl = item.shareUrl;
+		// 	const productLikeUrl = item.likeUrl;
+		// 	const productLabels = item.labels;
+
+		// 	let productTemplateStart = `<article data-pid="${productId}" class="products__item item-product">`;
+		// 	let productTemplateEnd = `</article>`;
+
+		// 	let productTemplateLabels = '';
+		// 	if (productLabels) {
+		// 		let productTemplateLabelsStart = `<div class="item-product__labels">`;
+		// 		let productTemplateLabelsEnd = `</div>`;
+		// 		let productTemplateLabelsContent = '';
+
+		// 		productLabels.forEach(labelItem => {
+		// 			productTemplateLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`;
+		// 		});
+
+		// 		productTemplateLabels += productTemplateLabelsStart;
+		// 		productTemplateLabels += productTemplateLabelsContent;
+		// 		productTemplateLabels += productTemplateLabelsEnd;
+		// 	}
+
+		// 	let productTemplateImage = `
+		// 	<a href="${productUrl}" class="item-product__image -ibg">
+		// 		<img src="img/products/${productImage}" alt="${productTitle}">
+		// 	</a>
+		// `;
+
+		// 	let productTemplateBodyStart = `<div class="item-product__body">`;
+		// 	let productTemplateBodyEnd = `</div>`;
+
+		// 	let productTemplateContent = `
+		// 	<div class="item-product__content">
+		// 		<h3 class="item-product__title">${productTitle}</h3>
+		// 		<div class="item-product__brand">${productBrand}</div>
+		// 	</div>
+		// `;
+
+		// 	let productTemplatePrices = '';
+		// 	let productTemplatePricesStart = `<div class="item-product__prices">`;
+		// 	let productTemplatePricesCurrent = `<div class="item-product__price">${productPrice}$</div>`;
+		// 	let productTemplatePricesOld = `<div class="item-product__price item-product__price_old">${productOldPrice}$</div>`;
+		// 	let productTemplatePricesEnd = `</div>`;
+
+		// 	productTemplatePrices = productTemplatePricesStart;
+		// 	productTemplatePrices += productTemplatePricesCurrent;
+		// 	if (productOldPrice) {
+		// 		productTemplatePrices += productTemplatePricesOld;
+		// 	}
+		// 	productTemplatePrices += productTemplatePricesEnd;
+
+		// 	let productTemplateActions = `
+		// 	<div class="item-product__actions actions-product">
+		// 		<div class="actions-product__body">
+		// 			<a href="" class="actions-product__button button button_white">Buy</a>
+		// 			<a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>
+		// 			<a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>
+		// 		</div>
+		// 	</div>
+		// `;
+
+		// 	let productTemplateBody = '';
+		// 	productTemplateBody += productTemplateBodyStart;
+		// 	productTemplateBody += productTemplateContent;
+		// 	productTemplateBody += productTemplatePrices;
+		// 	productTemplateBody += productTemplateActions;
+		// 	productTemplateBody += productTemplateBodyEnd;
+
+		// 	let productTemplate = '';
+		// 	productTemplate += productTemplateStart;
+		// 	productTemplate += productTemplateLabels;
+		// 	productTemplate += productTemplateImage;
+		// 	productTemplate += productTemplateBody;
+		// 	productTemplate += productTemplateEnd;
+
+		// 	productsItems.insertAdjacentHTML('beforeend', productTemplate);
+
+		// });
 	}
 }
 
