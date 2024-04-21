@@ -470,6 +470,10 @@ h6 {
   font-size: 2.4375rem;
 }
 
+._hidden {
+  display: none !important;
+}
+
 .header {
   color: #ffffff;
   position: absolute;
