@@ -369,7 +369,7 @@ h6 {
 }
 
 .select._select-open {
-  z-index: 5;
+  z-index: 3;
 }
 
 ._select-tag {
