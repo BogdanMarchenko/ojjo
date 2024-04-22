@@ -3927,9 +3927,14 @@
                         let strArr = priceFilter.split("-");
                         lowNumber = strArr[0].replace(/[\s$]/g, "");
                         topNumber = strArr[1].replace(/[\s$]/g, "");
+                        +lowNumber;
+                        +topNumber;
                     }
+                    console.log(topNumber);
+                    console.log(lowNumber);
+                    console.log(product.price);
                     const isBrandFiltered = !brandFilter || product.brand === brandFilter;
-                    const isPriceFiltered = !priceFilter || topNumber > product.price && product.price > lowNumber;
+                    const isPriceFiltered = !priceFilter || topNumber > +product.price && +product.price > lowNumber;
                     const isAudienceFiltered = !audienceFilter || product.audience === audienceFilter;
                     const isCollectionFiltered = !collectionFilter || product.Collection === collectionFilter;
                     const isSeasonFiltered = !seasonFilter || product.season === seasonFilter;
