@@ -4,6 +4,10 @@
 
 	&__products {
 	}
+	// .page__services
+
+	&__services {
+	}
 
 	// .page__mailing
 	&__mailing {
@@ -39,6 +43,12 @@
 		@include adaptiveValue("gap", 100, 30);
 		@media (max-width: $tablet) {
 			padding: rem(35) 0;
+		}
+		@media (max-width: $mobile) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		@media (max-width: $mobileSmall) {
+			grid-template-columns: repeat(1, 1fr);
 		}
 	}
 
@@ -162,6 +172,13 @@
 			&:hover {
 			}
 		}
+		@media (max-width: $tablet) {
+			justify-content: space-around;
+		}
+		@media (max-width: $mobileSmall) {
+			column-gap: rem(30);
+			justify-content: center;
+		}
 	}
 
 	// .item-product__price
@@ -265,5 +282,118 @@
 				color: goldenrod;
 			}
 		}
+	}
+}
+//====================================================================================================
+
+.services {
+	// .services__container
+
+	&__container {
+	}
+	//.services__container-in-container
+	&__container-in-container {
+		padding-top: rem(75);
+		padding-bottom: rem(75);
+		@include adaptiveValue("padding", 95, 30);
+		display: flex;
+		column-gap: rem(103);
+		@include adaptiveValue("column-gap", 103, 30);
+		align-items: start;
+		color: #000;
+		@media (max-width: $tablet) {
+			padding-top: rem(55);
+			padding-bottom: rem(55);
+		}
+		@media (max-width: $mobile) {
+			padding-top: rem(35);
+			padding-bottom: rem(35);
+			flex-direction: column;
+			row-gap: rem(30);
+			padding: rem(35) 0;
+		}
+		@media (max-width: $mobileSmall) {
+			padding: rem(20) 0;
+		}
+	}
+
+	// .services__description
+
+	&__description {
+		@media (max-width: $mobile) {
+			order: 2;
+		}
+	}
+
+	// .services__content
+
+	&__content {
+		position: relative;
+		&::before {
+			content: "";
+			position: absolute;
+			background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 0, 0, 0));
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			._showmore-active & {
+				background: transparent;
+			}
+		}
+		font-weight: 400;
+		font-size: rem(16);
+		line-height: 150%;
+	}
+
+	// .services__more
+
+	&__more {
+		display: inline-block;
+		font-weight: 500;
+		font-size: rem(18);
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		text-decoration: dotted;
+		border-bottom: 1px dashed $mainColor;
+
+		background-color: $mainColor dot;
+	}
+
+	// .services__items
+
+	&__items {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		@include adaptiveValue("column-gap", 60, 20);
+		@include adaptiveValue("row-gap", 30, 20);
+		column-gap: rem(60);
+		@media (max-width: $mobile) {
+			order: 1;
+			align-self: center;
+		}
+	}
+
+	// .services__item
+
+	&__item {
+	}
+}
+.item-services {
+	// .item-services__body
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		row-gap: rem(30);
+		column-gap: rem(43);
+	}
+
+	// .item-services__text
+
+	&__text {
+		text-align: center;
 	}
 }
