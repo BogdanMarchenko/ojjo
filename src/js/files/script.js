@@ -162,9 +162,6 @@ window.onload = function () {
 						+lowNumber;
 						+topNumber;
 					}
-					console.log(topNumber);
-					console.log(lowNumber);
-					console.log(product.price);
 
 					const isBrandFiltered = !brandFilter || product.brand === brandFilter;
 					const isPriceFiltered = !priceFilter || topNumber > +product.price && +product.price > lowNumber;
@@ -199,11 +196,19 @@ window.onload = function () {
 }
 
 
+//====================================================================================================
+//меняю высоту блока Show more для текста в зависимости от ширины экрана
+const showMoreContent = document.querySelector('.services__content');
+
+window.addEventListener('resize', function (event) {
+	if (window.innerWidth < 768) {
+		showMoreContent.setAttribute("data-showmore-content", "120");
+	} else {
+		showMoreContent.setAttribute("data-showmore-content", "240");
 
 
-
-
-
+	}
+});
 
 
 
