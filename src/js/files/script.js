@@ -6,7 +6,10 @@ import { flsModules } from "./modules.js";
 'use strict';
 // Код подгрузки products__item в зависимости от выбраных select 
 document.addEventListener("DOMContentLoaded", function () {
-	if (window.location.pathname === '/products.html') {
+	// получаем window.location.pathname тоесть проверяем на какой именно странице находимся
+	let pathName = window.location.pathname.split('/').pop();
+	if (pathName === 'products.html') {
+		console.log('ok');
 		// ваш код для определенной страницы
 		const showMoreButton = document.querySelector('.products__more');
 		const productsItems = document.querySelector('.products__items');
@@ -217,8 +220,10 @@ document.addEventListener("DOMContentLoaded", function () {
 //====================================================================================================
 //меняю высоту блока Show more для текста в зависимости от ширины экрана
 const showMoreContent = document.querySelector('.services__content');
+//
+let pathName = window.location.pathname.split('/').pop();
 
-if (window.location.pathname === `/products.html`) {
+if (pathName === `products.html`) {
 	window.addEventListener('resize', function (event) {
 		if (window.innerWidth < 768) {
 			showMoreContent.setAttribute("data-showmore-content", "120");
@@ -238,7 +243,7 @@ let ulrHashArr = window.location.href.split('#');
 let urlHash = ulrHashArr[1];
 
 // проверка загружено ли окно на product.html что бы не выбрасывало ошибку на других страницах (например обявленная переменна напр объекта на одной странице, не объявлена на другой - будет ошибка null is not a object)
-if (window.location.pathname === `/product.html`) {
+if (pathName === 'product.html') {
 	// Здесь ты можешь указать URL сервера, с которого ты хочешь получить информацию о товаре
 	const file = 'files/json/products.json';
 	const productURL = file;
