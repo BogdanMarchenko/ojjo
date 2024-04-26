@@ -60,9 +60,9 @@
 			order: 2;
 		}
 		@media (max-width: $mobileSmall) {
-			grid-template-columns: 1fr;
-
-			grid-auto-rows: 180px; /* Высота ряда 120px */
+			order: 0;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-auto-rows: 90px; /* Высота ряда 120px */
 		}
 	}
 
@@ -78,6 +78,10 @@
 			@media (max-width: $mobile) {
 				grid-column-end: span 1;
 				grid-row-end: span 1;
+			}
+			@media (max-width: $mobileSmall) {
+				grid-column-end: span 3;
+				grid-row-end: span 2;
 			}
 		}
 	}
@@ -212,7 +216,6 @@
 		font-weight: 400;
 		font-size: rem(14);
 		line-height: 150%;
-		margin-bottom: rem(10);
 	}
 
 	// .description__more
@@ -220,6 +223,7 @@
 	&__more {
 		text-decoration: underline;
 		color: goldenrod;
+		margin-top: rem(10);
 
 		& :last-child {
 			color: $mainColor;
@@ -327,7 +331,7 @@
 		padding: rem(10) rem(20);
 		border: 1px solid $mainColor;
 		@media (max-width: $mobile) {
-			padding: rem(6) rem(20);
+			padding: rem(6) rem(10);
 		}
 
 		@media (any-hover: hover) {
