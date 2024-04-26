@@ -3941,7 +3941,9 @@
     }), 0);
     "use strict";
     document.addEventListener("DOMContentLoaded", (function() {
-        if (window.location.pathname === "/products.html") {
+        let pathName = window.location.pathname.split("/").pop();
+        if (pathName === "products.html") {
+            console.log("ok");
             const showMoreButton = document.querySelector(".products__more");
             const productsItems = document.querySelector(".products__items");
             let startIndex = 0;
@@ -4056,13 +4058,14 @@
         }
     }));
     const showMoreContent = document.querySelector(".services__content");
-    if (window.location.pathname === `/products.html`) window.addEventListener("resize", (function(event) {
+    let pathName = window.location.pathname.split("/").pop();
+    if (pathName === `products.html`) window.addEventListener("resize", (function(event) {
         if (window.innerWidth < 768) showMoreContent.setAttribute("data-showmore-content", "120"); else showMoreContent.setAttribute("data-showmore-content", "240");
     }));
     window.location.href;
     let ulrHashArr = window.location.href.split("#");
     let urlHash = ulrHashArr[1];
-    if (window.location.pathname === `/product.html`) {
+    if (pathName === "product.html") {
         const file = "files/json/products.json";
         const productURL = file;
         fetchProductInfo(urlHash);
