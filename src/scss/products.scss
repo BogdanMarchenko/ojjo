@@ -133,6 +133,9 @@
 		padding: rem(25) rem(0);
 		display: flex;
 		flex-direction: column;
+		@media (max-width: $mobile) {
+			padding: rem(10) 0;
+		}
 	}
 
 	// .item-product__content
@@ -153,6 +156,8 @@
 	// .item-product__brand
 
 	&__brand {
+		display: block;
+		text-align: center;
 		font-weight: 600;
 		@include adaptiveValue("font-size", 24, 20);
 		line-height: math.div(34, 24);
@@ -167,6 +172,8 @@
 		align-items: center;
 		flex-wrap: wrap;
 		justify-content: center;
+		margin-bottom: rem(25);
+
 		@media (any-hover: none) {
 			margin-bottom: rem(25);
 			&:hover {
@@ -197,7 +204,7 @@
 			@include adaptiveValue("font-size", 16, 14);
 			font-weight: normal;
 			margin-left: rem(15);
-			border: 1px solid $mainColor;
+			border: 1px solid $grey;
 			padding: rem(10) rem(20);
 			position: relative;
 			text-decoration: line-through;
@@ -218,19 +225,19 @@
 		}
 	}
 	@media (any-hover: hover) {
-		opacity: 0;
-		visibility: hidden;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		left: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: rgba(0, 0, 0, 0.5);
-		z-index: 3;
-		transition: all 0.3s ease 0s;
+		// opacity: 0;
+		// visibility: hidden;
+		// position: absolute;
+		// width: 100%;
+		// height: 56%;
+		// top: 0;
+		// left: 0;
+		// display: flex;
+		// justify-content: center;
+		// align-items: center;
+		// background-color: rgba(0, 0, 0, 0.5);
+		// z-index: 3;
+		// transition: all 0.3s ease 0s;
 	}
 
 	// .actions-product__body
@@ -239,12 +246,8 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		@media (any-hover: hover) {
-			row-gap: rem(20);
-			padding: rem(0) rem(40);
-			&:hover {
-			}
-		}
+		row-gap: rem(20);
+		padding: rem(0) rem(0);
 	}
 
 	// .actions-product__button
@@ -252,7 +255,7 @@
 	&__button {
 		flex: 1 1 100%;
 		border: 1px solid $mainColor;
-		margin-bottom: rem(15);
+		// margin-bottom: rem(15);
 		@media (any-hover: hover) {
 			background-color: #fff;
 			color: $mainColor;
@@ -277,123 +280,9 @@
 			font-size: rem(26);
 		}
 		@media (any-hover: hover) {
-			color: #fff;
 			&:hover {
 				color: goldenrod;
 			}
 		}
-	}
-}
-//====================================================================================================
-
-.services {
-	// .services__container
-
-	&__container {
-	}
-	//.services__container-in-container
-	&__container-in-container {
-		padding-top: rem(75);
-		padding-bottom: rem(75);
-		@include adaptiveValue("padding", 95, 30);
-		display: flex;
-		column-gap: rem(103);
-		@include adaptiveValue("column-gap", 103, 30);
-		align-items: start;
-		color: #000;
-		@media (max-width: $tablet) {
-			padding-top: rem(55);
-			padding-bottom: rem(55);
-		}
-		@media (max-width: $mobile) {
-			padding-top: rem(35);
-			padding-bottom: rem(35);
-			flex-direction: column;
-			row-gap: rem(30);
-			padding: rem(35) 0;
-		}
-		@media (max-width: $mobileSmall) {
-			padding: rem(20) 0;
-		}
-	}
-
-	// .services__description
-
-	&__description {
-		@media (max-width: $mobile) {
-			order: 2;
-		}
-	}
-
-	// .services__content
-
-	&__content {
-		position: relative;
-		&::before {
-			content: "";
-			position: absolute;
-			background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 0, 0, 0));
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			._showmore-active & {
-				background: transparent;
-			}
-		}
-		font-weight: 400;
-		font-size: rem(16);
-		line-height: 150%;
-	}
-
-	// .services__more
-
-	&__more {
-		display: inline-block;
-		font-weight: 500;
-		font-size: rem(18);
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		text-decoration: dotted;
-		border-bottom: 1px dashed $mainColor;
-
-		background-color: $mainColor dot;
-	}
-
-	// .services__items
-
-	&__items {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		@include adaptiveValue("column-gap", 60, 20);
-		@include adaptiveValue("row-gap", 30, 20);
-		column-gap: rem(60);
-		@media (max-width: $mobile) {
-			order: 1;
-			align-self: center;
-		}
-	}
-
-	// .services__item
-
-	&__item {
-	}
-}
-.item-services {
-	// .item-services__body
-
-	&__body {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		row-gap: rem(30);
-		column-gap: rem(43);
-	}
-
-	// .item-services__text
-
-	&__text {
-		text-align: center;
 	}
 }

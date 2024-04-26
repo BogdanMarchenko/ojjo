@@ -1,276 +1,90 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 @@include('html/_head.htm',{
-"title":"Products"
+"title":"Product"
 })
 
 <body>
 	<div class="wrapper">
 		@@include('html/_header.htm',{})
 		<main class="page">
-			<section class="page__products products">
-				<div class="products__container">
-					<div class="products__selects">
-						<select name="form[]" data-pseudo-label="Brand" class="form" title="brand">
-							<!-- <option selected value="none">Brand</option> -->
-							<option selected value="none"></option>
-							<option value="all">All</option>
-							<option value="dolchegabana">Dolce & Gabanna</option>
-							<option value="tiffany">Tiffany & Co.</option>
-							<option value="cartier">Cartier</option>
-							<option value="bulgari">Bulgari</option>
-							<option value="chopard">Chopard</option>
-							<option value="harry-winston">Harry Winston</option>
-							<option value="van-cleef-arpels">Van Cleef & Arpels</option>
-							<option value="piaget">Piaget</option>
-							<option value="boucheron">Boucheron</option>
-						</select>
-						<select name="form[]" class="form" title="price">
-							<option selected value="none">Price</option>
-							<option value="all">All</option>
-							<option value="100">$100 or less</option>
-							<option value="500">$101 - $500</option>
-							<option value="1000">$501 - $1000</option>
-							<option value="1500">$1001 - $1500</option>
-							<option value="2000">$1501 - $2000</option>
-							<option value="3000">$2001 - $3000</option>
-							<option value="4000">$3001 - $4000</option>
-							<option value="5000">$4001 - $5000</option>
-							<option value="7500">$5001 - $7500</option>
-							<option value="10000">More than $7500</option>
-						</select>
-						<select name="form[]" class="form" title="target">
-							<option selected value="none">Audience</option>
-							<option value="all">All</option>
-							<option value="weddings">For weddings</option>
-							<option value="everyday_wear">For everyday wear</option>
-							<option value="parties_events">For parties and events</option>
-							<option value="professional_events">For professional events</option>
-							<option value="gifts">For gifts</option>
-							<option value="sports_events">For sports events</option>
-							<option value="travel">For travel</option>
-							<option value="formal_occasions">For formal occasions</option>
-						</select>
-						<select name="form[]" class="form" title="collection">
-							<option selected value="none">Collection</option>
-							<option value="all">All</option>
-							<option value="vintage">Vintage Collection</option>
-							<option value="modern">Modern Collection</option>
-							<option value="classic">Classic Collection</option>
-							<option value="bohemian">Bohemian Collection</option>
-							<option value="luxury">Luxury Collection</option>
-							<option value="artisan">Artisan Collection</option>
-							<option value="minimalist">Minimalist Collection</option>
-							<option value="ethnic">Ethnic Collection</option>
-						</select>
-						<select name="form[]" class="form" title="season">
-							<option selected value="none">Season</option>
-							<option value="all">All</option>
-							<option value="spring">Spring</option>
-							<option value="summer">Summer</option>
-							<option value="autumn">Autumn</option>
-							<option value="winter">Winter</option>
-						</select>
-						<select name="form[]" class="form" title="event">
-							<option selected value="none">Event</option>
-							<option value="all">All</option>
-							<option value="wedding">Wedding</option>
-							<option value="birthday">Birthday</option>
-							<option value="anniversary">Anniversary</option>
-							<option value="graduation">Graduation</option>
-							<option value="prom">Prom</option>
-							<option value="engagement">Engagement</option>
-							<option value="holiday">Holiday</option>
-							<option value="red_carpet">Red Carpet Event</option>
-						</select>
-					</div>
-					<div class="products__items">
-						<!-- иза того что у нас было 12 карточек товара с начала загрузки я закоменил товары, что бы они все из json файла подгружались и рендерерись с помощью js кода -->
-						<!-- для коректной работы добавления товара в корзину нам нужно как-то уникализировать каждый товар, для этого
-								добавляем атрибут data-pid='' (то есть product id) и номер! -->
-						<!-- <article data-pid="1" class="products__item item-product">
-							<div class="item-product__labels">
-								<div class="item-product__label item-product__label_sale">
-									-25%
-								</div>
-								<div class="item-product__label item-product__label_new">
-									New
-								</div>
+			<section class="page__product product">
+				<div class="product__container">
+					<ul class="product__titles titles">
+						<li class="titles__item">
+							<a href="index.html">Main page</a>
+						</li>
+						<li class="titles__item">
+							<a href="products.html">Catalog</a>
+						</li>
+						<li class="titles__item">
+							<a href="#">Categori</a>
+						</li>
+						<li class="titles__item">
+							<a href="#">Suspension Dolce & Gabbara</a>
+						</li>
+					</ul>
+					<div class="product__body">
+						<ul class="product__gallery">
+							<li class="product__gallery-item -ibg product__gallery-item_big">
+								<img class="product__img" src="@img/product/product1.jpg" alt="product">
+							</li>
+							<li class="product__gallery-item -ibg">
+								<img class="product__img" src="@img/product/product1.jpg" alt="product">
+							</li>
+							<li class="product__gallery-item -ibg">
+								<img class="product__img" src="@img/product/product1.jpg" alt="product">
+							</li>
+							<li class="product__gallery-item -ibg">
+								<img class="product__img" src="@img/product/product1.jpg" alt="product">
+							</li>
+						</ul>
+						<div class="product__description description">
+							<h4 class="description__title">Подвеска Dolce & Gabbana</h4>
+							<ul class="description__titles">
+								<li class="description__category"><span>Category:</span>
+									<a href="#">Suspensions</a>
+								</li>
+								<li class="description__brand"><span>Brand:</span>
+									<a href="#">Dolce & Gabbana</a>
+								</li>
+							</ul>
+							<div data-showmore data-showmore-media="768,max" class="description__text">
+								<div data-showmore-content="100" class="description__content">Lorem ipsum dolor sit amet,
+									consectetur
+									adipiscing elit. Blandit
+									mattis scelerisque odio nunc. Ipsum quis facilisis turpis vulputate. Viverra dignissim in nec
+									phasellus. Tincidunt est ipsum diam, vestibulum dignissim dui diam. Et nulla sit convallis
+									orci
+									est, fames sit luctus lacus. Nunc donec malesuada amet eget eget pharetra. Ultricies et, ac
+									varius at amet viverra feugiat non massa.
+									Vel vel in urna, sodales urna ac sed felis. Tellus augue et senectus malesuada faucibus
+									sollicitudin ornare. Sit non et sit enim in ornare velit. Ac imperdiet vitae, orci, nec
+									scelerisque enim sit enim risus.
+									Et nulla sit convallis orci est, fames sit luctus lacus.</div>
+								<button hidden data-showmore-button type="button" class="description__more"><span>Show
+										more</span><span>Hidden</span></button>
 							</div>
-							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
-									alt="product-image">
-							</a>
-							<div class="item-product__body">
-								<div class="item-product__content">
-									<h5 class="item-product__title">Suspension</h5>
-									<h4 class="item-product__brand">Dolce & Gabanna</h4>
+							<div class="description__details">
+								<div class="description__prices">
+									<div class="description__price">1000$</div>
+									<div class="description__price description__price_old">1300$</div>
 								</div>
-								<div class="item-product__prices">
-									<div class="item-product__price">1000$</div>
-									<div class="item-product__price item-product__price_old">1300$</div>
-								</div>
-								<div class="item-product__actions actions-product">
-									<div class="actions-product__body">
-										<a href="" class="actions-product__button button button_white">Buy</a>
-										<a href="" class="actions-product__link icon-3">Like</a>
-										<a href="" class="actions-product__link icon-3">Share</a>
+								<div class="description__labels">
+									<div class="description__label description__label_sale">
+										-25%
+									</div>
+									<div class="description__label description__label_new">
+										New
 									</div>
 								</div>
+
 							</div>
-						</article> -->
-						<!-- <article data-pid="2" class="products__item item-product">
-							<div class="item-product__labels">
-								<!-- <div class="item-product__label item-product__label_sale">
-									-30%
-								</div> -->
-						<!-- <div class="item-product__label item-product__label_new">
-									New
-								</div>
+							<div class="description__actions">
+								<button type="button" class="description__buy button">Buy</button>
+								<button type="button" class="description__add-to-basket button_white">Add to basket</button>
 							</div>
-							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
-									alt="product-image">
-							</a>
-							<div class="item-product__body">
-								<div class="item-product__content">
-									<h5 class="item-product__title">Suspension</h5>
-									<h4 class="item-product__brand">Dolce & Gabanna</h4>
-								</div>
-								<div class="item-product__prices">
-									<div class="item-product__price">1000$</div>
-									<div class="item-product__price item-product__price_old">1300$</div>
-								</div>
-								<div class="item-product__actions actions-product">
-									<div class="actions-product__body">
-										<a href="" class="actions-product__button button button_white">Buy</a>
-										<a href="" class="actions-product__link icon-3">Like</a>
-										<a href="" class="actions-product__link icon-3">Share</a>
-									</div>
-								</div>
-							</div>
-						</article> -->
-						<!-- <article data-pid="3" class="products__item item-product">
-							<div class="item-product__labels">
-								<div class="item-product__label item-product__label_sale">
-									-30%
-								</div>
-								<div class="item-product__label item-product__label_new">
-									New
-								</div>
-							</div>
-							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
-									alt="product-image">
-							</a>
-							<div class="item-product__body">
-								<div class="item-product__content">
-									<h5 class="item-product__title">Suspension</h5>
-									<h4 class="item-product__brand">Dolce & Gabanna</h4>
-								</div>
-								<div class="item-product__prices">
-									<div class="item-product__price">1000$</div>
-									<div class="item-product__price item-product__price_old">1300$</div>
-								</div>
-								<div class="item-product__actions actions-product">
-									<div class="actions-product__body">
-										<a href="" class="actions-product__button button button_white">Buy</a>
-										<a href="" class="actions-product__link icon-3">Like</a>
-										<a href="" class="actions-product__link icon-3">Share</a>
-									</div>
-								</div>
-							</div>
-						</article> -->
-						<!-- <article data-pid="4" class="products__item item-product">
-							<div class="item-product__labels">
-								<div class="item-product__label item-product__label_sale">
-									-30%
-								</div>
-								<div class="item-product__label item-product__label_new">
-									New
-								</div>
-							</div>
-							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
-									alt="product-image">
-							</a>
-							<div class="item-product__body">
-								<div class="item-product__content">
-									<h5 class="item-product__title">Suspension</h5>
-									<h4 class="item-product__brand">Dolce & Gabanna</h4>
-								</div>
-								<div class="item-product__prices">
-									<div class="item-product__price">1000$</div>
-									<div class="item-product__price item-product__price_old">1300$</div>
-								</div>
-								<div class="item-product__actions actions-product">
-									<div class="actions-product__body">
-										<a href="" class="actions-product__button button button_white">Buy</a>
-										<a href="" class="actions-product__link icon-3">Like</a>
-										<a href="" class="actions-product__link icon-3">Share</a>
-									</div>
-								</div>
-							</div>
-						</article> -->
-						<!-- <article data-pid="5" class="products__item item-product">
-							<div class="item-product__labels">
-								<div class="item-product__label item-product__label_sale">
-									-30%
-								</div>
-								<div class="item-product__label item-product__label_new">
-									New
-								</div>
-							</div>
-							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
-									alt="product-image">
-							</a>
-							<div class="item-product__body">
-								<div class="item-product__content">
-									<h5 class="item-product__title">Suspension</h5>
-									<h4 class="item-product__brand">Dolce & Gabanna</h4>
-								</div>
-								<div class="item-product__prices">
-									<div class="item-product__price">1000$</div>
-									<div class="item-product__price item-product__price_old">1300$</div>
-								</div>
-								<div class="item-product__actions actions-product">
-									<div class="actions-product__body">
-										<a href="" class="actions-product__button button button_white">Buy</a>
-										<a href="" class="actions-product__link icon-3">Like</a>
-										<a href="" class="actions-product__link icon-3">Share</a>
-									</div>
-								</div>
-							</div>
-						</article> -->
-						<!-- <article data-pid="6" class="products__item item-product">
-							<div class="item-product__labels">
-								<div class="item-product__label item-product__label_sale">
-									-30%
-								</div>
-								<div class="item-product__label item-product__label_new">
-									New
-								</div>
-							</div>
-							<a href="#" class="item-product__image -ibg"><img src="@img/products/product1.jpg"
-									alt="product-image">
-							</a>
-							<div class="item-product__body">
-								<div class="item-product__content">
-									<h5 class="item-product__title">Suspension</h5>
-									<h4 class="item-product__brand">Dolce & Gabanna</h4>
-								</div>
-								<div class="item-product__prices">
-									<div class="item-product__price">1000$</div>
-									<div class="item-product__price item-product__price_old">1300$</div>
-								</div>
-								<div class="item-product__actions actions-product">
-									<div class="actions-product__body">
-										<a href="" class="actions-product__button button button_white">Buy</a>
-										<a href="" class="actions-product__link icon-3">Like</a>
-										<a href="" class="actions-product__link icon-3">Share</a>
-									</div>
-								</div>
-							</div>
-						</article> -->
-					</div>
-					<div class="products__footer">
-						<button type="button" class="products__more button">Show more</button>
+						</div>
 					</div>
 				</div>
 			</section>
