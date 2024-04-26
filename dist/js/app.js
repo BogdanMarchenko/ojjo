@@ -4082,7 +4082,7 @@
         }
         function displayProductInfo(filteredData) {
             const product = filteredData[0];
-            product.id;
+            const productId = product.id;
             product.type;
             product.category;
             product.categoryBrand;
@@ -4096,6 +4096,7 @@
             product.shareUrl;
             product.likeUrl;
             product.labels;
+            const productTitlesItem = document.querySelector(".titles__item_product-link a");
             const productItemTitle = document.querySelector(".description__title");
             const productItemCategory = document.querySelector(".description__category a");
             const productItemBrand = document.querySelector(".description__brand a");
@@ -4103,11 +4104,13 @@
             const productItemOldPrice = document.querySelector(".description__price_old");
             document.querySelector(".description__gallery");
             const productItemImage = document.querySelectorAll(".product__gallery-item .product__img");
+            productTitlesItem.textContent = productTitle + " " + productBrand;
+            productTitlesItem.href = `product.html#${productId}`;
             productItemTitle.textContent = productTitle + " " + productBrand;
             productItemCategory.textContent = productTitle;
             productItemBrand.textContent = productBrand;
-            productItemPrice.textContent = productPrice;
-            productItemOldPrice.textContent = productOldPrice;
+            productItemPrice.textContent = `${productPrice}$`;
+            productItemOldPrice.textContent = `${productOldPrice}$`;
             productItemImage.forEach((function(item, index) {
                 return item.src = "../img/product/" + productImage[index].name;
             }));

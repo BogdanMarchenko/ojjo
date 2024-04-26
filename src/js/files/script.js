@@ -292,6 +292,7 @@ if (pathName === 'product.html') {
 		const productLabels = product.labels;
 
 		// получаем  нужные элементы для отображения информации о товаре
+		const productTitlesItem = document.querySelector('.titles__item_product-link a');
 		const productItemTitle = document.querySelector('.description__title');
 		const productItemCategory = document.querySelector('.description__category a');
 		const productItemBrand = document.querySelector('.description__brand a');
@@ -302,11 +303,15 @@ if (pathName === 'product.html') {
 		const productItemImage = document.querySelectorAll('.product__gallery-item .product__img');
 
 		// отображаем актуальную информацию о товаре полученую с сервера(product.json) путем замены контента
+		productTitlesItem.textContent = productTitle + ' ' + productBrand;
+		productTitlesItem.href = `product.html#${productId}`;
 		productItemTitle.textContent = productTitle + ' ' + productBrand;
 		productItemCategory.textContent = productTitle;
+		//? link на общие товари по категории
 		productItemBrand.textContent = productBrand;
-		productItemPrice.textContent = productPrice;
-		productItemOldPrice.textContent = productOldPrice;
+		//?link на общие товари по беренду
+		productItemPrice.textContent = `${productPrice}$`;
+		productItemOldPrice.textContent = `${productOldPrice}$`;
 		//отображаем фото product путем перебора масива тего img и вставки в атрибут src="" нужную строку пути и название фото через свойство name которое отображено в файле products.json 
 		productItemImage.forEach(function (item, index) {
 			return item.src = '../img/product/' + productImage[index].name;
