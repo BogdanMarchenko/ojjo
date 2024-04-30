@@ -3941,19 +3941,111 @@
     }), 0);
     "use strict";
     document.addEventListener("DOMContentLoaded", (function() {
-        let pathName = window.location.pathname.split("/").pop();
+        const pathName = window.location.pathname.split("/").pop();
+        const currentUrl = window.location.href;
+        let ulrHashArr = window.location.href.split("#");
+        let urlHash = ulrHashArr[1];
+        const showMoreButton = document.querySelector(".products__more");
+        const productsItems = document.querySelector(".products__items");
+        let startIndex = 0;
+        const itemsPerPage = 6;
+        let brandFilter = "";
+        let priceFilter = "";
+        let audienceFilter = "";
+        let collectionFilter = "";
+        let seasonFilter = "";
+        let eventFilter = "";
+        //! не доопрацьовано
+        //! =========================
+                async function loadProducts() {
+            const file = "files/json/products.json";
+            await fetch(file).then((response => response.json())).then((data => {
+                const filteredData = data.products.filter((product => {
+                    let lowNumber;
+                    let topNumber;
+                    if (priceFilter === "$100 or less") {
+                        lowNumber = 1;
+                        topNumber = 100;
+                    } else if (priceFilter === "More than $7500") {
+                        lowNumber = 75e3;
+                        topNumber = 1 / 0;
+                    } else if (priceFilter.includes("-", 0)) {
+                        let strArr = priceFilter.split("-");
+                        lowNumber = strArr[0].replace(/[\s$]/g, "");
+                        topNumber = strArr[1].replace(/[\s$]/g, "");
+                        +lowNumber;
+                        +topNumber;
+                    }
+                    const isBrandFiltered = !brandFilter || product.brand === brandFilter || "All" === brandFilter;
+                    const isPriceFiltered = !priceFilter || topNumber > +product.price && +product.price > lowNumber || "All" === priceFilter;
+                    const isAudienceFiltered = !audienceFilter || product.audience === audienceFilter || "All" === audienceFilter;
+                    const isCollectionFiltered = !collectionFilter || product.Collection === collectionFilter || "All" === collectionFilter;
+                    const isSeasonFiltered = !seasonFilter || product.season === seasonFilter || "All" === seasonFilter;
+                    const isEventFiltered = !eventFilter || product.event === eventFilter || "All" === eventFilter;
+                    return isBrandFiltered && isPriceFiltered && isAudienceFiltered && isCollectionFiltered && isSeasonFiltered && isEventFiltered;
+                }));
+                const slicedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
+                slicedData.forEach((product => {
+                    renderProductCard(product);
+                }));
+                if (slicedData.length < itemsPerPage) showMoreButton.style.display = "none";
+            })).catch((error => console.error("Ошибка загрузки данных:", error)));
+        }
+        function renderProductCard(product) {
+            const productId = product.id;
+            const productUrl = product.url;
+            const productImage = product.image[0].name;
+            const productTitle = product.title;
+            const productBrand = product.brand;
+            const productPrice = product.price;
+            const productOldPrice = product.priceOld;
+            const productShareUrl = product.shareUrl;
+            const productLikeUrl = product.likeUrl;
+            const productLabels = product.labels;
+            let productTemplateStart = `<article data-pid="${productId}" class="products__item item-product">`;
+            let productTemplateEnd = `</article>`;
+            let productTemplateLabels = "";
+            if (productLabels) {
+                let productTemplateLabelsStart = `<div class="item-product__labels">`;
+                let productTemplateLabelsEnd = `</div>`;
+                let productTemplateLabelsContent = "";
+                productLabels.forEach((labelItem => {
+                    productTemplateLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`;
+                }));
+                productTemplateLabels += productTemplateLabelsStart;
+                productTemplateLabels += productTemplateLabelsContent;
+                productTemplateLabels += productTemplateLabelsEnd;
+            }
+            let productTemplateImage = `\n\t\t  <a href="${productUrl}" class="item-product__image -ibg">\n\t\t\t\t<img src="img/products/${productImage}" alt="${productTitle}">\n\t\t  </a>\n\t `;
+            let productTemplateBodyStart = `<div class="item-product__body">`;
+            let productTemplateBodyEnd = `</div>`;
+            let productTemplateContent = `\n\t\t  <div class="item-product__content">\n\t\t\t\t<h3 class="item-product__title">${productTitle}</h3>\n\t\t\t\t<a href='product.html#${product.id}' class="item-product__brand">${productBrand}</a>\n\t\t  </div>\n\t `;
+            let productTemplatePrices = "";
+            let productTemplatePricesStart = `<div class="item-product__prices">`;
+            let productTemplatePricesCurrent = `<div class="item-product__price">${productPrice}$</div>`;
+            let productTemplatePricesOld = `<div class="item-product__price item-product__price_old">${productOldPrice}$</div>`;
+            let productTemplatePricesEnd = `</div>`;
+            productTemplatePrices = productTemplatePricesStart;
+            productTemplatePrices += productTemplatePricesCurrent;
+            if (productOldPrice) productTemplatePrices += productTemplatePricesOld;
+            productTemplatePrices += productTemplatePricesEnd;
+            let productTemplateActions = `\n\t\t  <div class="item-product__actions actions-product">\n\t\t\t\t<div class="actions-product__body">\n\t\t\t\t\t <a href="" class="actions-product__button button button_white">Buy</a>\n\t\t\t\t\t <a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>\n\t\t\t\t\t <a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>\n\t\t\t\t</div>\n\t\t  </div>\n\t `;
+            let productTemplateBody = "";
+            productTemplateBody += productTemplateBodyStart;
+            productTemplateBody += productTemplateContent;
+            productTemplateBody += productTemplatePrices;
+            productTemplateBody += productTemplateActions;
+            productTemplateBody += productTemplateBodyEnd;
+            let productTemplate = "";
+            productTemplate += productTemplateStart;
+            productTemplate += productTemplateLabels;
+            productTemplate += productTemplateImage;
+            productTemplate += productTemplateBody;
+            productTemplate += productTemplateEnd;
+            productsItems.insertAdjacentHTML("beforeend", productTemplate);
+        }
         if (pathName === "products.html") {
-            console.log("ok");
-            const showMoreButton = document.querySelector(".products__more");
-            const productsItems = document.querySelector(".products__items");
-            let startIndex = 0;
-            const itemsPerPage = 6;
-            let brandFilter = "";
-            let priceFilter = "";
-            let audienceFilter = "";
-            let collectionFilter = "";
-            let seasonFilter = "";
-            let eventFilter = "";
+            loadProducts();
             document.querySelectorAll(".select__option").forEach((function(filter) {
                 filter.addEventListener("click", (function(e) {
                     const filterValue = e.target.textContent;
@@ -3963,159 +4055,99 @@
                     loadProducts();
                 }));
             }));
-            function renderProductCard(product) {
-                const productId = product.id;
-                const productUrl = product.url;
-                const productImage = product.image[0].name;
-                const productTitle = product.title;
-                const productBrand = product.brand;
-                const productPrice = product.price;
-                const productOldPrice = product.priceOld;
-                const productShareUrl = product.shareUrl;
-                const productLikeUrl = product.likeUrl;
-                const productLabels = product.labels;
-                let productTemplateStart = `<article data-pid="${productId}" class="products__item item-product">`;
-                let productTemplateEnd = `</article>`;
-                let productTemplateLabels = "";
-                if (productLabels) {
-                    let productTemplateLabelsStart = `<div class="item-product__labels">`;
-                    let productTemplateLabelsEnd = `</div>`;
-                    let productTemplateLabelsContent = "";
-                    productLabels.forEach((labelItem => {
-                        productTemplateLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`;
-                    }));
-                    productTemplateLabels += productTemplateLabelsStart;
-                    productTemplateLabels += productTemplateLabelsContent;
-                    productTemplateLabels += productTemplateLabelsEnd;
-                }
-                let productTemplateImage = `\n\t\t\t  <a href="${productUrl}" class="item-product__image -ibg">\n\t\t\t\t\t<img src="img/products/${productImage}" alt="${productTitle}">\n\t\t\t  </a>\n\t\t `;
-                let productTemplateBodyStart = `<div class="item-product__body">`;
-                let productTemplateBodyEnd = `</div>`;
-                let productTemplateContent = `\n\t\t\t  <div class="item-product__content">\n\t\t\t\t\t<h3 class="item-product__title">${productTitle}</h3>\n\t\t\t\t\t<a href='product.html#${product.id}' class="item-product__brand">${productBrand}</a>\n\t\t\t  </div>\n\t\t `;
-                let productTemplatePrices = "";
-                let productTemplatePricesStart = `<div class="item-product__prices">`;
-                let productTemplatePricesCurrent = `<div class="item-product__price">${productPrice}$</div>`;
-                let productTemplatePricesOld = `<div class="item-product__price item-product__price_old">${productOldPrice}$</div>`;
-                let productTemplatePricesEnd = `</div>`;
-                productTemplatePrices = productTemplatePricesStart;
-                productTemplatePrices += productTemplatePricesCurrent;
-                if (productOldPrice) productTemplatePrices += productTemplatePricesOld;
-                productTemplatePrices += productTemplatePricesEnd;
-                let productTemplateActions = `\n\t\t\t  <div class="item-product__actions actions-product">\n\t\t\t\t\t<div class="actions-product__body">\n\t\t\t\t\t\t <a href="" class="actions-product__button button button_white">Buy</a>\n\t\t\t\t\t\t <a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>\n\t\t\t\t\t\t <a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>\n\t\t\t\t\t</div>\n\t\t\t  </div>\n\t\t `;
-                let productTemplateBody = "";
-                productTemplateBody += productTemplateBodyStart;
-                productTemplateBody += productTemplateContent;
-                productTemplateBody += productTemplatePrices;
-                productTemplateBody += productTemplateActions;
-                productTemplateBody += productTemplateBodyEnd;
-                let productTemplate = "";
-                productTemplate += productTemplateStart;
-                productTemplate += productTemplateLabels;
-                productTemplate += productTemplateImage;
-                productTemplate += productTemplateBody;
-                productTemplate += productTemplateEnd;
-                productsItems.insertAdjacentHTML("beforeend", productTemplate);
-            }
-            async function loadProducts() {
-                const file = "files/json/products.json";
-                await fetch(file).then((response => response.json())).then((data => {
-                    const filteredData = data.products.filter((product => {
-                        let lowNumber;
-                        let topNumber;
-                        if (priceFilter === "$100 or less") {
-                            lowNumber = 1;
-                            topNumber = 100;
-                        } else if (priceFilter === "More than $7500") {
-                            lowNumber = 75e3;
-                            topNumber = 1 / 0;
-                        } else if (priceFilter.includes("-", 0)) {
-                            let strArr = priceFilter.split("-");
-                            lowNumber = strArr[0].replace(/[\s$]/g, "");
-                            topNumber = strArr[1].replace(/[\s$]/g, "");
-                            +lowNumber;
-                            +topNumber;
-                        }
-                        const isBrandFiltered = !brandFilter || product.brand === brandFilter || "All" === brandFilter;
-                        const isPriceFiltered = !priceFilter || topNumber > +product.price && +product.price > lowNumber || "All" === priceFilter;
-                        const isAudienceFiltered = !audienceFilter || product.audience === audienceFilter || "All" === audienceFilter;
-                        const isCollectionFiltered = !collectionFilter || product.Collection === collectionFilter || "All" === collectionFilter;
-                        const isSeasonFiltered = !seasonFilter || product.season === seasonFilter || "All" === seasonFilter;
-                        const isEventFiltered = !eventFilter || product.event === eventFilter || "All" === eventFilter;
-                        return isBrandFiltered && isPriceFiltered && isAudienceFiltered && isCollectionFiltered && isSeasonFiltered && isEventFiltered;
-                    }));
-                    const slicedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
-                    slicedData.forEach((product => {
-                        renderProductCard(product);
-                    }));
-                    if (slicedData.length < itemsPerPage) showMoreButton.style.display = "none";
-                })).catch((error => console.error("Ошибка загрузки данных:", error)));
-            }
-            loadProducts();
             showMoreButton.addEventListener("click", (function() {
                 startIndex += itemsPerPage;
                 loadProducts();
             }));
+            const showMoreContent = document.querySelector(".services__content");
+            if (pathName === `products.html`) window.addEventListener("resize", (function(event) {
+                if (window.innerWidth < 768) showMoreContent.setAttribute("data-showmore-content", "120"); else showMoreContent.setAttribute("data-showmore-content", "240");
+            }));
         }
-    }));
-    const showMoreContent = document.querySelector(".services__content");
-    let pathName = window.location.pathname.split("/").pop();
-    if (pathName === `products.html`) window.addEventListener("resize", (function(event) {
-        if (window.innerWidth < 768) showMoreContent.setAttribute("data-showmore-content", "120"); else showMoreContent.setAttribute("data-showmore-content", "240");
-    }));
-    window.location.href;
-    let ulrHashArr = window.location.href.split("#");
-    let urlHash = ulrHashArr[1];
-    if (pathName === "product.html") {
-        const file = "files/json/products.json";
-        const productURL = file;
-        fetchProductInfo(urlHash);
-        function fetchProductInfo(urlHash) {
-            fetch(productURL).then((response => response.json())).then((data => {
-                const filteredData = data.products.filter((product => {
-                    const isIdFiltered = product.id == urlHash;
-                    return isIdFiltered;
+        if (pathName === "product.html") {
+            const file = "files/json/products.json";
+            const productURL = file;
+            fetchProductInfo(urlHash);
+            function fetchProductInfo(urlHash) {
+                fetch(productURL).then((response => response.json())).then((data => {
+                    const filteredData = data.products.filter((product => {
+                        const isIdFiltered = product.id == urlHash;
+                        return isIdFiltered;
+                    }));
+                    displayProductInfo(filteredData);
+                })).catch((error => {
+                    console.error("Ошибка при получении информации о товаре:", error);
                 }));
-                displayProductInfo(filteredData);
-            })).catch((error => {
-                console.error("Ошибка при получении информации о товаре:", error);
-            }));
+            }
+            function displayProductInfo(filteredData) {
+                const product = filteredData[0];
+                const productId = product.id;
+                const productTitle = product.title;
+                const productBrand = product.brand;
+                const productPrice = product.price;
+                const productOldPrice = product.priceOld;
+                const productImage = product.image;
+                const productLabels = product.labels;
+                product.type;
+                product.url;
+                product.category;
+                product.categoryBrand;
+                product.text;
+                product.shareUrl;
+                product.likeUrl;
+                const productTitlesItem = document.querySelector(".titles__item_product-link a");
+                const productItemTitle = document.querySelector(".description__title");
+                const productItemCategory = document.querySelector(".description__category a");
+                const productItemBrand = document.querySelector(".description__brand a");
+                const productItemPrice = document.querySelector(".description__price");
+                const productItemOldPrice = document.querySelector(".description__price_old");
+                document.querySelector(".description__gallery");
+                const productItemLabeleSale = document.querySelector(".description__label_sale");
+                const productItemLabeleNew = document.querySelector(".description__label_new");
+                const productItemImages = document.querySelectorAll(".product__gallery-item .product__img");
+                productTitlesItem.textContent = productTitle + " " + productBrand;
+                productTitlesItem.href = `product.html#${productId}`;
+                productItemTitle.textContent = productTitle + " " + productBrand;
+                productItemCategory.textContent = productTitle;
+                productItemCategory.href = productItemCategory.href + "#" + "category:" + productItemCategory.textContent;
+                productItemBrand.textContent = productBrand;
+                productItemBrand.href = productItemBrand.href + "#" + "brand:" + productItemBrand.textContent;
+                productItemPrice.textContent = `${productPrice}$`;
+                productItemOldPrice.textContent = `${productOldPrice}$`;
+                productItemImages.forEach((function(item, index) {
+                    return item.src = "../img/products/" + productImage[index].name;
+                }));
+                productLabels.forEach((function(item, index) {
+                    console.log(item);
+                    console.log(item.type);
+                    if (item.type === "new") productItemLabeleNew.textContent = item.value; else productItemLabeleNew.remove();
+                    if (item.type === "sale") productItemLabeleSale.textContent = item.value; else productItemLabeleSale.remove();
+                }));
+            }
         }
-        function displayProductInfo(filteredData) {
-            const product = filteredData[0];
-            const productId = product.id;
-            product.type;
-            product.category;
-            product.categoryBrand;
-            product.text;
-            const productPrice = product.price;
-            const productOldPrice = product.priceOld;
-            product.url;
-            const productImage = product.image;
-            const productTitle = product.title;
-            const productBrand = product.brand;
-            product.shareUrl;
-            product.likeUrl;
-            product.labels;
-            const productTitlesItem = document.querySelector(".titles__item_product-link a");
-            const productItemTitle = document.querySelector(".description__title");
-            const productItemCategory = document.querySelector(".description__category a");
-            const productItemBrand = document.querySelector(".description__brand a");
-            const productItemPrice = document.querySelector(".description__price");
-            const productItemOldPrice = document.querySelector(".description__price_old");
-            document.querySelector(".description__gallery");
-            const productItemImage = document.querySelectorAll(".product__gallery-item .product__img");
-            productTitlesItem.textContent = productTitle + " " + productBrand;
-            productTitlesItem.href = `product.html#${productId}`;
-            productItemTitle.textContent = productTitle + " " + productBrand;
-            productItemCategory.textContent = productTitle;
-            productItemBrand.textContent = productBrand;
-            productItemPrice.textContent = `${productPrice}$`;
-            productItemOldPrice.textContent = `${productOldPrice}$`;
-            productItemImage.forEach((function(item, index) {
-                return item.src = "../img/product/" + productImage[index].name;
-            }));
+        //! не доработано
+        //! ===========================
+                if (currentUrl.includes("products.html#")) {
+            let ulrItem = window.location.href.split("products.html#");
+            let urlWithoutHash = window.location.href.split("#")[0];
+            history.replaceState(null, null, urlWithoutHash);
+            if (ulrItem[1].includes("category")) {
+                let categoryArr = ulrItem[1].split(":");
+                decodeURIComponent(categoryArr[1]);
+            } else if (ulrItem[1].includes("brand")) {
+                let brandArr = ulrItem[1].split(":");
+                let brand = decodeURIComponent(brandArr[1]);
+                document.querySelector('[data-id="1"');
+                let optionContent = document.querySelector(".select__content");
+                optionContent.textContent = brand;
+                let selector = `[data-value="${brand.toLowerCase()}"]`;
+                //! доработать ==============
+                                document.querySelector(selector);
+                brandFilter = brand;
+                //! ========================
+                        }
         }
-    }
+    }));
     window["FLS"] = true;
     isWebp();
     menuInit();
