@@ -4115,7 +4115,7 @@
                 productItemPrice.textContent = `${productPrice}$`;
                 productItemOldPrice.textContent = `${productOldPrice}$`;
                 productItemImages.forEach((function(item, index) {
-                    return item.src = "../img/products/" + productImage[index].name;
+                    return item.src = "img/products/" + productImage[index].name;
                 }));
                 productLabels.forEach((function(item, index) {
                     console.log(item);
