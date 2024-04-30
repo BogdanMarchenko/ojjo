@@ -3,55 +3,65 @@
 		{
 		"id": 1,
 		"url": "product.html#1",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Chopard",
 		"audience": "For everyday wear",
 		"event": "Wedding",
 		"season": "Summer",
 		"collection": "Modern Collection",
-		"labels": "",
+		"labels": [
+			{
+				"type": "new",
+				"value": "New"
+
+			}
+		],
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1400",
 		"priceOld": "1300",
-		"shareUrl": "",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit mattis scelerisque odio nunc. Ipsum quis facilisis turpis vulputate. Viverra dignissim in nec phasellus. Tincidunt est ipsum diam, vestibulum dignissim dui diam. Et nulla sit convallis orci est, fames sit luctus lacus. Nunc donec malesuada amet eget eget pharetra. Ultricies et, ac varius at amet viverra feugiat non massa. Vel vel in urna, sodales urna ac sed felis. Tellus augue et senectus malesuada faucibus sollicitudin ornare. Sit non et sit enim in ornare velit.",	
 		"likeUrl": ""
 		},
 		{
 		"id": 2,
 		"url": "product.html#2",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Chopard",
 		"audience": "For everyday wear",
 		"event": "Wedding",
 		"season": "Summer",
 		"collection": "Classic Collection",
-		"labels": "",
+		"labels": [
+			{
+				"type": "sale",
+				"value": "-30%"
+			}
+		],
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product2-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product2-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product2-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product2-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -63,25 +73,35 @@
 		{
 		"id": 3,
 		"url": "product.html#3",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Harry Winston",
 		"audience": "For everyday wear",
 		"event": "Wedding",
 		"season": "Summer",
 		"collection": "Classic Collection",
-		"labels": "",
+		"labels": [
+			{
+				"type": "sale",
+				"value": "-30%"
+			},
+			{
+				"type": "new",
+				"value": "New"
+
+			}
+		],
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product3-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product3-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product3-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product3-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -93,7 +113,7 @@
 		{
 		"id": 4,
 		"url": "product.html#4",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Van Cleef & Arpels",
 		"audience": "For everyday wear",
 		"event": "Wedding",
@@ -102,16 +122,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product4-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product4-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product4-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product4-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -123,25 +143,31 @@
 		{
 		"id": 5,
 		"url": "product.html#5",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Piaget",
 		"audience": "For everyday wear",
 		"event": "Wedding",
 		"season": "Summer",
 		"collection": "Classic Collection",
-		"labels": "",
+		"labels": [
+			{
+				"type": "new",
+				"value": "New"
+
+			}
+		],
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product5-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product5-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product5-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product5-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -153,7 +179,7 @@
 		{
 		"id": 6,
 		"url": "product.html#6",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
 		"event": "Wedding",
@@ -162,16 +188,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product6-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product6-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product6-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product6-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -183,7 +209,7 @@
 		{
 		"id": 7,
 		"url": "product.html#7",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Boucheron",
 		"audience": "For everyday wear",
 		"event": "Wedding",
@@ -192,16 +218,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product7-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product7-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product7-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product7-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -213,7 +239,7 @@
 		{
 		"id": 8,
 		"url": "product.html#8",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
 		"event": "Wedding",
@@ -222,16 +248,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -243,7 +269,7 @@
 		{
 		"id": 9,
 		"url": "product.html#9",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
 		"event": "Wedding",
@@ -252,16 +278,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -273,7 +299,7 @@
 		{
 		"id": 10,
 		"url": "product.html#10",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
 		"event": "Wedding",
@@ -282,16 +308,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -303,7 +329,7 @@
 		{
 		"id": 11,
 		"url": "product.html#11",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
 		"event": "Wedding",
@@ -312,16 +338,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -333,7 +359,7 @@
 		{
 		"id": 12,
 		"url": "product.html#12",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
 		"event": "Wedding",
@@ -342,16 +368,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1000",
@@ -363,7 +389,7 @@
 		{
 		"id": 13,
 		"url": "product.html#13",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For parties and events",
 		"event": "Birthday",
@@ -372,16 +398,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1100",
@@ -393,7 +419,7 @@
 		{
 		"id": 14,
 		"url": "product.html#14",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For parties and events",
 		"event": "Birthday",
@@ -402,16 +428,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1300",
@@ -423,7 +449,7 @@
 		{
 		"id": 15,
 		"url": "product.html#15",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For parties and events",
 		"event": "Anniversary",
@@ -432,16 +458,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "2000",
@@ -453,7 +479,7 @@
 		{
 		"id": 16,
 		"url": "product.html#16",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Bulgari",
 		"audience": "For weddings",
 		"event": "Anniversary",
@@ -462,16 +488,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1450",
@@ -483,7 +509,7 @@
 		{
 		"id": 17,
 		"url": "product.html#17",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Bulgari",
 		"audience": "For everyday wear",
 		"event": "Graduation",
@@ -492,16 +518,16 @@
 		"labels": "",
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 		"price": "1200",
@@ -513,7 +539,7 @@
 		{
 		"id": 18,
 		"url": "product.html#18",
-		"title": "Suspension ",
+		"title": "Suspension",
 		"brand": "Tiffany & Co.",
 		"audience": "For everyday wear",
 		"event": "Prom",
@@ -532,19 +558,19 @@
 		],
 		"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
-		"price": "1300",
+		"price": "1200",
 		"priceOld": "1500",
 		"shareUrl": "",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit mattis scelerisque odio nunc. Ipsum quis facilisis turpis vulputate. Viverra dignissim in nec phasellus. Tincidunt est ipsum diam, vestibulum dignissim dui diam. Et nulla sit convallis orci est, fames sit luctus lacus. Nunc donec malesuada amet eget eget pharetra. Ultricies et, ac varius at amet viverra feugiat non massa. Vel vel in urna, sodales urna ac sed felis. Tellus augue et senectus malesuada faucibus sollicitudin ornare. Sit non et sit enim in ornare velit.",	
@@ -562,16 +588,16 @@
 			"labels": "",
 			"image": [
 				{
-					"name": "product1.jpg"
+					"name": "product1-1.jpg"
 				},
 				{
-					"name": "product2.jpg"
+					"name": "product1-2.jpg"
 				},
 				{
-					"name": "product3.jpg"
+					"name": "product1-3.jpg"
 				},
 				{
-					"name": "product4.jpg"
+					"name": "product1-4.jpg"
 				}
 			],
 			"price": "1800",
