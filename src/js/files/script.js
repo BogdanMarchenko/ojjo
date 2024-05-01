@@ -313,7 +313,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			productItemOldPrice.textContent = `${productOldPrice}$`;
 			//отображаем фото product путем перебора масива тего img и вставки в атрибут src="" нужную строку пути и название фото через свойство name которое отображено в файле products.json 
 			productItemImages.forEach(function (item, index) {
-				return item.src = '/img/products/' + productImage[index].name;
+				return item.src = 'img/products/' + productImage[index].name;
 			});
 			if (productLabels) {
 				productLabels.forEach(function (item) {
