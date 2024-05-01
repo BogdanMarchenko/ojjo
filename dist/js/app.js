@@ -4102,8 +4102,8 @@
                 const productItemPrice = document.querySelector(".description__price");
                 const productItemOldPrice = document.querySelector(".description__price_old");
                 document.querySelector(".description__gallery");
-                const productItemLabeleSale = document.querySelector(".description__label_sale");
-                const productItemLabeleNew = document.querySelector(".description__label_new");
+                const productItemLabelSale = document.querySelector(".description__label_sale");
+                const productItemLabelNew = document.querySelector(".description__label_new");
                 const productItemImages = document.querySelectorAll(".product__gallery-item .product__img");
                 productTitlesItem.textContent = productTitle + " " + productBrand;
                 productTitlesItem.href = `product.html#${productId}`;
@@ -4115,13 +4115,17 @@
                 productItemPrice.textContent = `${productPrice}$`;
                 productItemOldPrice.textContent = `${productOldPrice}$`;
                 productItemImages.forEach((function(item, index) {
-                    return item.src = "img/products/" + productImage[index].name;
+                    return item.src = "/img/products/" + productImage[index].name;
                 }));
-                productLabels.forEach((function(item, index) {
-                    console.log(item);
-                    console.log(item.type);
-                    if (item.type === "new") productItemLabeleNew.textContent = item.value; else productItemLabeleNew.remove();
-                    if (item.type === "sale") productItemLabeleSale.textContent = item.value; else productItemLabeleSale.remove();
+                if (productLabels) productLabels.forEach((function(item) {
+                    if (item.type === "new") {
+                        productItemLabelNew.textContent = item.value;
+                        productItemLabelNew.classList.remove("_hidden");
+                    }
+                    if (item.type === "sale") {
+                        productItemLabelSale.textContent = item.value;
+                        productItemLabelSale.classList.remove("_hidden");
+                    }
                 }));
             }
         }

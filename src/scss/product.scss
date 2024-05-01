@@ -208,6 +208,10 @@
 
 	&__text {
 		border-top: 1px solid #d6d6d6;
+		margin-bottom: rem(15);
+		@media (max-width: $mobileSmall) {
+			margin-bottom: rem(10);
+		}
 	}
 
 	// .description__content

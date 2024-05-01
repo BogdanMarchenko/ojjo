@@ -290,8 +290,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			const productItemPrice = document.querySelector('.description__price');
 			const productItemOldPrice = document.querySelector('.description__price_old');
 			const productItemGallery = document.querySelector('.description__gallery');
-			const productItemLabeleSale = document.querySelector('.description__label_sale');
-			const productItemLabeleNew = document.querySelector('.description__label_new');
+			const productItemLabelSale = document.querySelector('.description__label_sale');
+			const productItemLabelNew = document.querySelector('.description__label_new');
 
 			// на фото получаем коллекцию фото
 			const productItemImages = document.querySelectorAll('.product__gallery-item .product__img');
@@ -313,23 +313,20 @@ document.addEventListener("DOMContentLoaded", function () {
 			productItemOldPrice.textContent = `${productOldPrice}$`;
 			//отображаем фото product путем перебора масива тего img и вставки в атрибут src="" нужную строку пути и название фото через свойство name которое отображено в файле products.json 
 			productItemImages.forEach(function (item, index) {
-				return item.src = 'img/products/' + productImage[index].name;
+				return item.src = '/img/products/' + productImage[index].name;
 			});
-
-			productLabels.forEach(function (item, index) {
-				console.log(item);
-				console.log(item.type);
-				if (item.type === 'new') {
-					productItemLabeleNew.textContent = item.value;
-				} else {
-					productItemLabeleNew.remove();
-				}
-				if (item.type === 'sale') {
-					productItemLabeleSale.textContent = item.value;
-				} else {
-					productItemLabeleSale.remove();
-				}
-			});
+			if (productLabels) {
+				productLabels.forEach(function (item) {
+					if (item.type === 'new') {
+						productItemLabelNew.textContent = item.value;
+						productItemLabelNew.classList.remove('_hidden');
+					}
+					if (item.type === 'sale') {
+						productItemLabelSale.textContent = item.value;
+						productItemLabelSale.classList.remove('_hidden');
+					}
+				});
+			}
 		}
 	}
 	//! не доработано
