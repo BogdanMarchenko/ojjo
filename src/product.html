@@ -27,16 +27,24 @@
 					<div class="product__body">
 						<ul class="product__gallery">
 							<li class="product__gallery-item -ibg product__gallery-item_big">
-								<img class="product__img" src="" alt="product">
+								<a href="" class="product__gallery-link">
+									<img class="product__img" src="" alt="product" data-popup="#product-popup" id="img1">
+								</a>
+							</li>
+							<li class=" product__gallery-item -ibg">
+								<a href="" class="product__gallery-link">
+									<img class="product__img" src="" alt="product" data-popup="#product-popup" id="img2">
+								</a>
 							</li>
 							<li class="product__gallery-item -ibg">
-								<img class="product__img" src="" alt="product">
+								<a href="" class="product__gallery-link">=
+									<img class="product__img" src="" alt="product" data-popup="#product-popup" id="img3">
+								</a>
 							</li>
 							<li class="product__gallery-item -ibg">
-								<img class="product__img" src="" alt="product">
-							</li>
-							<li class="product__gallery-item -ibg">
-								<img class="product__img" src="" alt="product">
+								<a href="" class="product__gallery-link">
+									<img class="product__img" src="" alt="product" data-popup="#product-popup" id="img4">
+								</a>
 							</li>
 						</ul>
 						<div class="product__description description">
@@ -67,8 +75,8 @@
 							</div>
 							<div class="description__details">
 								<div class="description__prices">
-									<div class="description__price">1000$</div>
-									<div class="description__price description__price_old">1300$</div>
+									<div class="description__price"></div>
+									<div class="description__price description__price_old"></div>
 								</div>
 								<div class="description__labels">
 									<div class="description__label description__label_sale _hidden">
@@ -263,6 +271,60 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			</section>
+			<section class="page__maylike maylike">
+				<div class="maylike__container">
+					<h5 class="maylike__title top-title">We have prepared something else for you</h5>
+					<h2 class="maylike__main-title section-title">Products that you may like</h2>
+					<!-- Оболочка слайдера -->
+					<div class="maylike__slider swiper">
+						<!-- Двигающееся часть слайдера -->
+						<div class="maylike__wrapper swiper-wrapper">
+							<!-- Слайд -->
+							<!-- <div class="maylike__slide swiper-slide">
+								<article data-pid="4" class="item-product">
+									<div class="item-product__labels">
+										<div class="item-product__label item-product__label_sale">
+											-30%
+										</div>
+										<div class="item-product__label item-product__label_new">
+											New
+										</div>
+									</div>
+									<a href="#" class="item-product__image -ibg"><img src="@img/products/product1-1.jpg"
+											alt="product-image">
+									</a>
+									<div class="item-product__body">
+										<div class="item-product__content">
+											<h5 class="item-product__title">Suspension</h5>
+											<h4 class="item-product__brand">Dolce & Gabanna</h4>
+										</div>
+										<div class="item-product__prices">
+											<div class="item-product__price">1000$</div>
+											<div class="item-product__price item-product__price_old">1300$</div>
+										</div>
+										<div class="item-product__actions actions-product">
+											<div class="actions-product__body">
+												<a href="" class="actions-product__button button button_white">Buy</a>
+												<a href="" class="actions-product__link icon-3">Like</a>
+												<a href="" class="actions-product__link icon-3">Share</a>
+											</div>
+										</div>
+									</div>
+								</article>
+							</div> -->
+						</div>
+						<!-- Если нужна пагинация -->
+						<div class="swiper-pagination"></div>
+						<!-- Если нужна навигация (влево/вправо) -->
+						<button type="button" class="swiper-button-prev"></button>
+						<button type="button" class="swiper-button-next"></button>
+						<!-- Если нужен скролбар -->
+						<div class="swiper-scrollbar"></div>
+					</div>
+
+
 				</div>
 			</section>
 			<section class="page__mailing mailing">

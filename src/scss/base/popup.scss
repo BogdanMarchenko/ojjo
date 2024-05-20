@@ -52,10 +52,26 @@ body::after {
 	transition: transform 0.3s ease 0s;
 	background-color: #eee;
 	padding: 20px;
-	width: 100%;
 	max-width: 900px;
 	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	row-gap: 20px;
+	width: 100%;
+	@media (max-width: $tablet) {
+	}
 	.lock & {
 		visibility: visible;
 	}
+}
+.popup__close {
+	order: 1;
+}
+
+.popup__img {
+	max-height: rem(600);
+	object-fit: contain;
+	width: 100%;
 }

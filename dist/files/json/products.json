@@ -2,7 +2,7 @@
 	"products": [
 		{
 		"id": 1,
-		"url": "product.html#1",
+		"url": "product.html?1",
 		"title": "Suspension",
 		"brand": "Chopard",
 		"audience": "For everyday wear",
@@ -31,13 +31,13 @@
 				}
 			],
 		"price": "1400",
-		"priceOld": "1300",
+		"priceOld": "",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit mattis scelerisque odio nunc. Ipsum quis facilisis turpis vulputate. Viverra dignissim in nec phasellus. Tincidunt est ipsum diam, vestibulum dignissim dui diam. Et nulla sit convallis orci est, fames sit luctus lacus. Nunc donec malesuada amet eget eget pharetra. Ultricies et, ac varius at amet viverra feugiat non massa. Vel vel in urna, sodales urna ac sed felis. Tellus augue et senectus malesuada faucibus sollicitudin ornare. Sit non et sit enim in ornare velit.",	
 		"likeUrl": ""
 		},
 		{
 		"id": 2,
-		"url": "product.html#2",
+		"url": "product.html?2",
 		"title": "Suspension",
 		"brand": "Chopard",
 		"audience": "For everyday wear",
@@ -64,15 +64,15 @@
 					"name": "product2-4.jpg"
 				}
 			],
-		"price": "1000",
-		"priceOld": "1300",
+		"price": "980",
+		"priceOld": "1400",
 		"shareUrl": "",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit mattis scelerisque odio nunc. Ipsum quis facilisis turpis vulputate. Viverra dignissim in nec phasellus. Tincidunt est ipsum diam, vestibulum dignissim dui diam. Et nulla sit convallis orci est, fames sit luctus lacus. Nunc donec malesuada amet eget eget pharetra. Ultricies et, ac varius at amet viverra feugiat non massa. Vel vel in urna, sodales urna ac sed felis. Tellus augue et senectus malesuada faucibus sollicitudin ornare. Sit non et sit enim in ornare velit.",	
 		"likeUrl": ""
 		},
 		{
 		"id": 3,
-		"url": "product.html#3",
+		"url": "product.html?3",
 		"title": "Suspension",
 		"brand": "Harry Winston",
 		"audience": "For everyday wear",
@@ -82,7 +82,7 @@
 		"labels": [
 			{
 				"type": "sale",
-				"value": "-30%"
+				"value": "-20%"
 			},
 			{
 				"type": "new",
@@ -104,7 +104,7 @@
 					"name": "product3-4.jpg"
 				}
 			],
-		"price": "1000",
+		"price": "1040",
 		"priceOld": "1300",
 		"shareUrl": "",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit mattis scelerisque odio nunc. Ipsum quis facilisis turpis vulputate. Viverra dignissim in nec phasellus. Tincidunt est ipsum diam, vestibulum dignissim dui diam. Et nulla sit convallis orci est, fames sit luctus lacus. Nunc donec malesuada amet eget eget pharetra. Ultricies et, ac varius at amet viverra feugiat non massa. Vel vel in urna, sodales urna ac sed felis. Tellus augue et senectus malesuada faucibus sollicitudin ornare. Sit non et sit enim in ornare velit.",	
@@ -112,7 +112,7 @@
 		},
 		{
 		"id": 4,
-		"url": "product.html#4",
+		"url": "product.html?4",
 		"title": "Suspension",
 		"brand": "Van Cleef & Arpels",
 		"audience": "For everyday wear",
@@ -142,7 +142,7 @@
 		},
 		{
 		"id": 5,
-		"url": "product.html#5",
+		"url": "product.html?5",
 		"title": "Suspension",
 		"brand": "Piaget",
 		"audience": "For everyday wear",
@@ -170,15 +170,15 @@
 					"name": "product5-4.jpg"
 				}
 			],
-		"price": "1000",
-		"priceOld": "1300",
+		"price": "2000",
+		"priceOld": "",
 		"shareUrl": "",
 		"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Blandit mattis scelerisque odio nunc. Ipsum quis facilisis turpis vulputate. Viverra dignissim in nec phasellus. Tincidunt est ipsum diam, vestibulum dignissim dui diam. Et nulla sit convallis orci est, fames sit luctus lacus. Nunc donec malesuada amet eget eget pharetra. Ultricies et, ac varius at amet viverra feugiat non massa. Vel vel in urna, sodales urna ac sed felis. Tellus augue et senectus malesuada faucibus sollicitudin ornare. Sit non et sit enim in ornare velit.",	
 		"likeUrl": ""
 		},
 		{
 		"id": 6,
-		"url": "product.html#6",
+		"url": "product.html?6",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
@@ -208,7 +208,7 @@
 		},
 		{
 		"id": 7,
-		"url": "product.html#7",
+		"url": "product.html?7",
 		"title": "Suspension",
 		"brand": "Boucheron",
 		"audience": "For everyday wear",
@@ -238,7 +238,7 @@
 		},
 		{
 		"id": 8,
-		"url": "product.html#8",
+		"url": "product.html?8",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
@@ -268,7 +268,7 @@
 		},
 		{
 		"id": 9,
-		"url": "product.html#9",
+		"url": "product.html?9",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
@@ -298,7 +298,7 @@
 		},
 		{
 		"id": 10,
-		"url": "product.html#10",
+		"url": "product.html?10",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
@@ -328,7 +328,7 @@
 		},
 		{
 		"id": 11,
-		"url": "product.html#11",
+		"url": "product.html?11",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
@@ -358,7 +358,7 @@
 		},
 		{
 		"id": 12,
-		"url": "product.html#12",
+		"url": "product.html?12",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For everyday wear",
@@ -388,7 +388,7 @@
 		},
 		{
 		"id": 13,
-		"url": "product.html#13",
+		"url": "product.html?13",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For parties and events",
@@ -418,7 +418,7 @@
 		},
 		{
 		"id": 14,
-		"url": "product.html#14",
+		"url": "product.html?14",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For parties and events",
@@ -448,7 +448,7 @@
 		},
 		{
 		"id": 15,
-		"url": "product.html#15",
+		"url": "product.html?15",
 		"title": "Suspension",
 		"brand": "Dolce & Gabanna",
 		"audience": "For parties and events",
@@ -478,7 +478,7 @@
 		},
 		{
 		"id": 16,
-		"url": "product.html#16",
+		"url": "product.html?16",
 		"title": "Suspension",
 		"brand": "Bulgari",
 		"audience": "For weddings",
@@ -508,7 +508,7 @@
 		},
 		{
 		"id": 17,
-		"url": "product.html#17",
+		"url": "product.html?17",
 		"title": "Suspension",
 		"brand": "Bulgari",
 		"audience": "For everyday wear",
@@ -538,7 +538,7 @@
 		},
 		{
 		"id": 18,
-		"url": "product.html#18",
+		"url": "product.html?18",
 		"title": "Suspension",
 		"brand": "Tiffany & Co.",
 		"audience": "For everyday wear",
@@ -578,7 +578,7 @@
 		},
 		{
 			"id": 19,
-			"url": "product.html#19",
+			"url": "product.html?19",
 			"brand": "Tiffany & Co.",
 			"audience": "For everyday wear",
 			"event": "Prom",
