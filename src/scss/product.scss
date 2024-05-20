@@ -9,6 +9,11 @@
 	&__services {
 	}
 
+	// .page__maylike
+
+	&__maylike {
+	}
+
 	// .page__mailing
 
 	&__mailing {
@@ -84,6 +89,9 @@
 				grid-row-end: span 2;
 			}
 		}
+	}
+	// .product__gallery-link
+	&__product__gallery-link {
 	}
 	// .product__img-ibg
 	&__img {
@@ -192,11 +200,12 @@
 			margin-right: rem(15);
 		}
 		& a {
-			border-bottom: 1px solid transparent;
+			color: goldenrod;
+			border-bottom: 1px solid goldenrod;
 			@media (any-hover: hover) {
 				&:hover {
-					border-bottom: 1px solid goldenrod;
-					color: goldenrod;
+					border-bottom: 1px solid $mainColor;
+					color: $mainColor;
 				}
 			}
 		}
@@ -344,5 +353,46 @@
 				color: #fff;
 			}
 		}
+	}
+}
+
+//====================================================================================================
+
+.maylike {
+	// .maylike__container
+
+	&__container {
+		padding-top: rem(60);
+		padding-bottom: rem(60);
+	}
+
+	// .maylike__title
+
+	&__title {
+		text-align: center;
+		margin-bottom: rem(15);
+	}
+
+	// .maylike__main-title
+
+	&__main-title {
+		text-align: center;
+	}
+
+	// .maylike__slider
+
+	&__slider {
+	}
+
+	// .maylike__wrapper
+
+	&__wrapper {
+		padding-top: rem(60);
+		padding-bottom: rem(60);
+	}
+
+	// .maylike__slide
+
+	&__slide {
 	}
 }

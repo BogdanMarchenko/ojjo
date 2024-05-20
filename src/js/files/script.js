@@ -4,14 +4,33 @@ import { isMobile } from "./functions.js";
 import { flsModules } from "./modules.js";
 
 'use strict';
+
+document.addEventListener("DOMContentLoaded", function () {
+
+});
+
 // Код подгрузки products__item в зависимости от выбраных select 
 document.addEventListener("DOMContentLoaded", function () {
+	//! При открытии popup сохраняем параметры запроса в localStorage (проблема с открытым попап при загрузке страницы- что бы не терялись данные запроса в строке)
+	localStorage.setItem('queryParams', window.location.search);
+
+	// Проверяем, есть ли параметры запроса в localStorage
+	const savedQueryParams = localStorage.getItem('queryParams');
+	if (savedQueryParams) {
+		// Применяем параметры запроса к URL страницы
+		const currentUrl = window.location.href.split('?')[0] + savedQueryParams;
+		// Заменяем текущий URL на URL с параметрами запроса
+		history.replaceState(null, null, currentUrl);
+		// Удаляем сохраненные параметры из localStorage, чтобы они не использовались повторно
+		localStorage.removeItem('queryParams');
+	}
+	//!=====================================================
 
 	// получаем window.location.pathname тоесть проверяем на какой именно странице находимся
 	const pathName = window.location.pathname.split('/').pop();
 	// получаем hash после перехода на конкретный product
 	const currentUrl = window.location.href;
-	let ulrHashArr = window.location.href.split('#');
+	let ulrHashArr = window.location.href.split('?');
 	let urlHash = ulrHashArr[1];
 
 	const showMoreButton = document.querySelector('.products__more');
@@ -47,8 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			.then(data => {
 				// Применяем фильтры к данным
 				const filteredData = data.products.filter(product => {
-
-					let priceStr = priceFilter;
 					let lowNumber;
 					let topNumber;
 					if (priceFilter === '$100 or less') {
@@ -135,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		let productTemplateContent = `
 		  <div class="item-product__content">
 				<h3 class="item-product__title">${productTitle}</h3>
-				<a href='product.html#${product.id}' class="item-product__brand">${productBrand}</a>
+				<a href='product.html?${product.id}' class="item-product__brand">${productBrand}</a>
 		  </div>
 	 `;
 
@@ -177,6 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		productTemplate += productTemplateEnd;
 
 		productsItems.insertAdjacentHTML('beforeend', productTemplate);
+
 	}
 
 	//если находимся на products.html
@@ -232,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 	// проверка загружено ли окно на product.html что бы не выбрасывало ошибку на других страницах (например обявленная переменна напр объекта на одной странице, не объявлена на другой - будет ошибка null is not a object)
 	if (pathName === 'product.html') {
+
 		// Здесь ты можешь указать URL сервера, с которого ты хочешь получить информацию о товаре
 		const file = 'files/json/products.json';
 		const productURL = file;
@@ -239,6 +258,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		fetchProductInfo(urlHash)
 
+		// обработчик события при возврате на прошлую страницу, так как при окрытии и закрытии popup (добавляется hash №product-popup) и при возврате назад изгнорировать открытие страници с hash тоесть не открывать при возврате назад ранее открытый popup 
+		window.addEventListener('popstate', function (event) {
+			// Здесь можно выполнять действия при возврате на предыдущую страницу
+			if (window.location.hash === '#product-popup') {
+				// Возвращаемся на предыдущую страницу, пропуская popup
+				window.history.back();
+				window.location.reload();
+			}
+			window.history.back();
+
+		});
 		// Функция для выполнения запроса на сервер и обработки полученных данных
 		function fetchProductInfo(urlHash) {
 			fetch(productURL)
@@ -253,6 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					// Здесь можешь сделать что-то с полученными данными, например, вывести их на страницу
 					// Передаём отфильтрованый product в функцию отображения информации на страницу
 					displayProductInfo(filteredData);
+
 				})
 				// отлавливаем ошибку
 				.catch(error => {
@@ -262,6 +293,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Функция для отображения информации о товаре на странице
 		function displayProductInfo(filteredData) {
+			// Проверяем, есть ли хеш в URL
+			if (window.location.hash) {
+				// Если хеш есть, устанавливаем URL без хеша
+				history.replaceState(null, null, currentUrl);
+			}
+
 			// так как мы передаём масив отфильтрованых результатов, хотя у него длина 0 то есьь один product, получаем его в константу
 			const product = filteredData[0];
 			// получаем все нужные свойства products в константы
@@ -295,26 +332,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			// на фото получаем коллекцию фото
 			const productItemImages = document.querySelectorAll('.product__gallery-item .product__img');
+			// получаем ссылки
+			// const productItemLinks = document.querySelectorAll('.product__gallery-link');
+			const productItemImgPopup = document.querySelector('.popup__img');
 
 			// отображаем актуальную информацию о товаре полученую с сервера(product.json) путем замены контента
 			productTitlesItem.textContent = productTitle + ' ' + productBrand;
-			productTitlesItem.href = `product.html#${productId}`;
+			productTitlesItem.href = `product.html?${productId}`;
 			productItemTitle.textContent = productTitle + ' ' + productBrand;
 
 			productItemCategory.textContent = productTitle;
 			//? link на общие товари по категории
-			productItemCategory.href = productItemCategory.href + '#' + 'category:' + productItemCategory.textContent;
+			productItemCategory.href = productItemCategory.href + '?' + 'category:' + productItemCategory.textContent;
 
 			productItemBrand.textContent = productBrand;
 			//?link на общие товари по беренду
-			productItemBrand.href = productItemBrand.href + '#' + 'brand:' + productItemBrand.textContent;
+			productItemBrand.href = productItemBrand.href + '?' + 'brand:' + productItemBrand.textContent;
 
 			productItemPrice.textContent = `${productPrice}$`;
-			productItemOldPrice.textContent = `${productOldPrice}$`;
+
+			if (productItemOldPrice.textContent !== '') {
+				productItemOldPrice.textContent = `${productOldPrice}$`;
+			}
 			//отображаем фото product путем перебора масива тего img и вставки в атрибут src="" нужную строку пути и название фото через свойство name которое отображено в файле products.json 
 			productItemImages.forEach(function (item, index) {
+
 				return item.src = 'img/products/' + productImage[index].name;
 			});
+			productItemImages.forEach(function (item) {
+				item.addEventListener("click", function (e) {
+					let targetImg = e.target;
+					let srcImg = targetImg.src;
+					productItemImgPopup.setAttribute('src', srcImg)
+				});
+			})
 			if (productLabels) {
 				productLabels.forEach(function (item) {
 					if (item.type === 'new') {
@@ -327,7 +378,128 @@ document.addEventListener("DOMContentLoaded", function () {
 					}
 				});
 			}
+			displayMayLikeProduct(productBrand);
 		}
+
+		const swiperList = document.querySelector('.maylike__wrapper');
+
+
+		//функция отображения maylike товаров
+		async function displayMayLikeProduct(brand) {
+			const file = 'files/json/products.json';
+			await fetch(file)
+				.then(response => response.json())
+				.then(data => {
+					// Применяем фильтры к данным
+					const filteredData = data.products.filter(product => {
+						const isBrandFiltered = product.brand === brand;
+						// вконце возвращаем те элементы которые соответствует заданным фильтрам тоесть все true
+						return isBrandFiltered;
+					});
+
+					// Отображаем отфильтрованные данные
+					//itemsPerPage это число сколько задано items изначально на странице и по сколько айтемов добавлять
+					// const slicedData = filteredData.slice(startIndex, startIndex + itemsPerPage);
+
+					function renderMayLikeCard(product) {
+						const productId = product.id;
+						const productUrl = product.url;
+						const productImage = product.image[0].name;
+						const productTitle = product.title;
+						const productBrand = product.brand;
+						const productPrice = product.price;
+						const productOldPrice = product.priceOld;
+						const productShareUrl = product.shareUrl;
+						const productLikeUrl = product.likeUrl;
+						const productLabels = product.labels;
+
+						let productTemplateStart = `<div class="maylike__slide swiper-slide">
+						<article data-pid="${productId}" class="products__item item-product">`;
+						let productTemplateEnd = `</article></div>`;
+
+						let productTemplateLabels = '';
+						if (productLabels) {
+							let productTemplateLabelsStart = `<div class="item-product__labels">`;
+							let productTemplateLabelsEnd = `</div>`;
+							let productTemplateLabelsContent = '';
+
+							productLabels.forEach(labelItem => {
+								productTemplateLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`;
+							});
+
+							productTemplateLabels += productTemplateLabelsStart;
+							productTemplateLabels += productTemplateLabelsContent;
+							productTemplateLabels += productTemplateLabelsEnd;
+						}
+
+						let productTemplateImage = `
+		  <a href="${productUrl}" class="item-product__image -ibg">
+				<img src="img/products/${productImage}" alt="${productTitle}">
+		  </a>
+	 `;
+
+						let productTemplateBodyStart = `<div class="item-product__body">`;
+						let productTemplateBodyEnd = `</div>`;
+
+						let productTemplateContent = `
+		  <div class="item-product__content">
+				<h3 class="item-product__title">${productTitle}</h3>
+				<a href='product.html?${product.id}' class="item-product__brand">${productBrand}</a>
+		  </div>
+	 `;
+
+						let productTemplatePrices = '';
+						let productTemplatePricesStart = `<div class="item-product__prices">`;
+						let productTemplatePricesCurrent = `<div class="item-product__price">${productPrice}$</div>`;
+						let productTemplatePricesOld = `<div class="item-product__price item-product__price_old">${productOldPrice}$</div>`;
+						let productTemplatePricesEnd = `</div>`;
+
+						productTemplatePrices = productTemplatePricesStart;
+						productTemplatePrices += productTemplatePricesCurrent;
+						if (productOldPrice) {
+							productTemplatePrices += productTemplatePricesOld;
+						}
+						productTemplatePrices += productTemplatePricesEnd;
+
+						let productTemplateActions = `
+		  <div class="item-product__actions actions-product">
+				<div class="actions-product__body">
+					 <a href="" class="actions-product__button button button_white">Buy</a>
+					 <a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>
+					 <a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>
+				</div>
+		  </div>
+	 `;
+
+						let productTemplateBody = '';
+						productTemplateBody += productTemplateBodyStart;
+						productTemplateBody += productTemplateContent;
+						productTemplateBody += productTemplatePrices;
+						productTemplateBody += productTemplateActions;
+						productTemplateBody += productTemplateBodyEnd;
+
+						let productTemplate = '';
+						productTemplate += productTemplateStart;
+						productTemplate += productTemplateLabels;
+						productTemplate += productTemplateImage;
+						productTemplate += productTemplateBody;
+						productTemplate += productTemplateEnd;
+
+						swiperList.insertAdjacentHTML('beforeend', productTemplate);
+					}
+
+					//выводим айтемы на страницу
+					filteredData.forEach(product => {
+						renderMayLikeCard(product);
+					});
+					// if (slicedData.length < itemsPerPage) {
+					// 	showMoreButton.style.display = 'none'; // Скрываем кнопку, если больше нет товаров для загрузки
+					// }
+				})
+				.catch(error => console.error('Ошибка загрузки данных:', error));
+		}
+
+		// displayMayLikeProduct(brand);
 	}
 	//! не доработано
 	// function toWriteDescriptionBrand(value) {
@@ -352,11 +524,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-	if (currentUrl.includes('products.html#')) {
-		let ulrItem = window.location.href.split('products.html#');
+	if (currentUrl.includes('products.html?')) {
+		let ulrItem = window.location.href.split('products.html?');
 
 		// Получаем текущий URL без хэша
-		let urlWithoutHash = window.location.href.split('#')[0];
+		let urlWithoutHash = window.location.href.split('?')[0];
 
 		// Заменяем текущий URL на версию без хэша
 		history.replaceState(null, null, urlWithoutHash);
@@ -367,7 +539,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		} else if (ulrItem[1].includes('brand')) {
 			let brandArr = ulrItem[1].split(':')
 			let brand = decodeURIComponent(brandArr[1]);
-			let selectId1 = document.querySelector('[data-id="1"');
+			// let selectId1 = document.querySelector('[data-id="1"');
 			let optionContent = document.querySelector('.select__content');
 			optionContent.textContent = brand;
 			let selector = `[data-value="${brand.toLowerCase()}"]`;
@@ -379,6 +551,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			// console.log(element);
 			// element.click();
 			brandFilter = brand;
+
 			//! ========================
 		}
 	}

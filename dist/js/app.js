@@ -387,6 +387,251 @@
             }
         }
     }
+    class Popup {
+        constructor(options) {
+            let config = {
+                logging: true,
+                init: true,
+                attributeOpenButton: "data-popup",
+                attributeCloseButton: "data-close",
+                fixElementSelector: "[data-lp]",
+                youtubeAttribute: "data-popup-youtube",
+                youtubePlaceAttribute: "data-popup-youtube-place",
+                setAutoplayYoutube: true,
+                classes: {
+                    popup: "popup",
+                    popupContent: "popup__content",
+                    popupActive: "popup_show",
+                    bodyActive: "popup-show"
+                },
+                focusCatch: true,
+                closeEsc: true,
+                bodyLock: true,
+                hashSettings: {
+                    location: true,
+                    goHash: true
+                },
+                on: {
+                    beforeOpen: function() {},
+                    afterOpen: function() {},
+                    beforeClose: function() {},
+                    afterClose: function() {}
+                }
+            };
+            this.youTubeCode;
+            this.isOpen = false;
+            this.targetOpen = {
+                selector: false,
+                element: false
+            };
+            this.previousOpen = {
+                selector: false,
+                element: false
+            };
+            this.lastClosed = {
+                selector: false,
+                element: false
+            };
+            this._dataValue = false;
+            this.hash = false;
+            this._reopen = false;
+            this._selectorOpen = false;
+            this.lastFocusEl = false;
+            this._focusEl = [ "a[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "button:not([disabled]):not([aria-hidden])", "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "area[href]", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])' ];
+            this.options = {
+                ...config,
+                ...options,
+                classes: {
+                    ...config.classes,
+                    ...options?.classes
+                },
+                hashSettings: {
+                    ...config.hashSettings,
+                    ...options?.hashSettings
+                },
+                on: {
+                    ...config.on,
+                    ...options?.on
+                }
+            };
+            this.bodyLock = false;
+            this.options.init ? this.initPopups() : null;
+        }
+        initPopups() {
+            this.popupLogging(`Проснулся`);
+            this.eventsPopup();
+        }
+        eventsPopup() {
+            document.addEventListener("click", function(e) {
+                const buttonOpen = e.target.closest(`[${this.options.attributeOpenButton}]`);
+                if (buttonOpen) {
+                    e.preventDefault();
+                    this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
+                    this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ? buttonOpen.getAttribute(this.options.youtubeAttribute) : null;
+                    if (this._dataValue !== "error") {
+                        if (!this.isOpen) this.lastFocusEl = buttonOpen;
+                        this.targetOpen.selector = `${this._dataValue}`;
+                        this._selectorOpen = true;
+                        this.open();
+                        return;
+                    } else this.popupLogging(`Ой ой, не заполнен атрибут у ${buttonOpen.classList}`);
+                    return;
+                }
+                const buttonClose = e.target.closest(`[${this.options.attributeCloseButton}]`);
+                if (buttonClose || !e.target.closest(`.${this.options.classes.popupContent}`) && this.isOpen) {
+                    e.preventDefault();
+                    this.close();
+                    return;
+                }
+            }.bind(this));
+            document.addEventListener("keydown", function(e) {
+                if (this.options.closeEsc && e.which == 27 && e.code === "Escape" && this.isOpen) {
+                    e.preventDefault();
+                    this.close();
+                    return;
+                }
+                if (this.options.focusCatch && e.which == 9 && this.isOpen) {
+                    this._focusCatch(e);
+                    return;
+                }
+            }.bind(this));
+            if (this.options.hashSettings.goHash) {
+                window.addEventListener("hashchange", function() {
+                    if (window.location.hash) this._openToHash(); else this.close(this.targetOpen.selector);
+                }.bind(this));
+                window.addEventListener("load", function() {
+                    if (window.location.hash) this._openToHash();
+                }.bind(this));
+            }
+        }
+        open(selectorValue) {
+            if (bodyLockStatus) {
+                this.bodyLock = document.documentElement.classList.contains("lock") && !this.isOpen ? true : false;
+                if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") {
+                    this.targetOpen.selector = selectorValue;
+                    this._selectorOpen = true;
+                }
+                if (this.isOpen) {
+                    this._reopen = true;
+                    this.close();
+                }
+                if (!this._selectorOpen) this.targetOpen.selector = this.lastClosed.selector;
+                if (!this._reopen) this.previousActiveElement = document.activeElement;
+                this.targetOpen.element = document.querySelector(this.targetOpen.selector);
+                if (this.targetOpen.element) {
+                    if (this.youTubeCode) {
+                        const codeVideo = this.youTubeCode;
+                        const urlVideo = `https://www.youtube.com/embed/${codeVideo}?rel=0&showinfo=0&autoplay=1`;
+                        const iframe = document.createElement("iframe");
+                        iframe.setAttribute("allowfullscreen", "");
+                        const autoplay = this.options.setAutoplayYoutube ? "autoplay;" : "";
+                        iframe.setAttribute("allow", `${autoplay}; encrypted-media`);
+                        iframe.setAttribute("src", urlVideo);
+                        if (!this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) {
+                            this.targetOpen.element.querySelector(".popup__text").setAttribute(`${this.options.youtubePlaceAttribute}`, "");
+                        }
+                        this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).appendChild(iframe);
+                    }
+                    if (this.options.hashSettings.location) {
+                        this._getHash();
+                        this._setHash();
+                    }
+                    this.options.on.beforeOpen(this);
+                    document.dispatchEvent(new CustomEvent("beforePopupOpen", {
+                        detail: {
+                            popup: this
+                        }
+                    }));
+                    this.targetOpen.element.classList.add(this.options.classes.popupActive);
+                    document.documentElement.classList.add(this.options.classes.bodyActive);
+                    if (!this._reopen) !this.bodyLock ? bodyLock() : null; else this._reopen = false;
+                    this.targetOpen.element.setAttribute("aria-hidden", "false");
+                    this.previousOpen.selector = this.targetOpen.selector;
+                    this.previousOpen.element = this.targetOpen.element;
+                    this._selectorOpen = false;
+                    this.isOpen = true;
+                    setTimeout((() => {
+                        this._focusTrap();
+                    }), 50);
+                    this.options.on.afterOpen(this);
+                    document.dispatchEvent(new CustomEvent("afterPopupOpen", {
+                        detail: {
+                            popup: this
+                        }
+                    }));
+                    this.popupLogging(`Открыл попап`);
+                } else this.popupLogging(`Ой ой, такого попапа нет.Проверьте корректность ввода. `);
+            }
+        }
+        close(selectorValue) {
+            if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") this.previousOpen.selector = selectorValue;
+            if (!this.isOpen || !bodyLockStatus) return;
+            this.options.on.beforeClose(this);
+            document.dispatchEvent(new CustomEvent("beforePopupClose", {
+                detail: {
+                    popup: this
+                }
+            }));
+            if (this.youTubeCode) if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`)) this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = "";
+            this.previousOpen.element.classList.remove(this.options.classes.popupActive);
+            this.previousOpen.element.setAttribute("aria-hidden", "true");
+            if (!this._reopen) {
+                document.documentElement.classList.remove(this.options.classes.bodyActive);
+                !this.bodyLock ? bodyUnlock() : null;
+                this.isOpen = false;
+            }
+            this._removeHash();
+            if (this._selectorOpen) {
+                this.lastClosed.selector = this.previousOpen.selector;
+                this.lastClosed.element = this.previousOpen.element;
+            }
+            this.options.on.afterClose(this);
+            document.dispatchEvent(new CustomEvent("afterPopupClose", {
+                detail: {
+                    popup: this
+                }
+            }));
+            setTimeout((() => {
+                this._focusTrap();
+            }), 50);
+            this.popupLogging(`Закрыл попап`);
+        }
+        _getHash() {
+            if (this.options.hashSettings.location) this.hash = this.targetOpen.selector.includes("#") ? this.targetOpen.selector : this.targetOpen.selector.replace(".", "#");
+        }
+        _openToHash() {
+            let classInHash = document.querySelector(`.${window.location.hash.replace("#", "")}`) ? `.${window.location.hash.replace("#", "")}` : document.querySelector(`${window.location.hash}`) ? `${window.location.hash}` : null;
+            const buttons = document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) ? document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash}"]`) : document.querySelector(`[${this.options.attributeOpenButton} = "${classInHash.replace(".", "#")}"]`);
+            if (buttons && classInHash) this.open(classInHash);
+        }
+        _setHash() {
+            history.pushState("", "", this.hash);
+        }
+        _removeHash() {
+            history.pushState("", "", window.location.href.split("#")[0]);
+        }
+        _focusCatch(e) {
+            const focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
+            const focusArray = Array.prototype.slice.call(focusable);
+            const focusedIndex = focusArray.indexOf(document.activeElement);
+            if (e.shiftKey && focusedIndex === 0) {
+                focusArray[focusArray.length - 1].focus();
+                e.preventDefault();
+            }
+            if (!e.shiftKey && focusedIndex === focusArray.length - 1) {
+                focusArray[0].focus();
+                e.preventDefault();
+            }
+        }
+        _focusTrap() {
+            const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
+            if (!this.isOpen && this.lastFocusEl) this.lastFocusEl.focus(); else focusable[0].focus();
+        }
+        popupLogging(message) {
+            this.options.logging ? functions_FLS(`[Попапос]: ${message}`) : null;
+        }
+    }
+    modules_flsModules.popup = new Popup({});
     let formValidate = {
         getErrors(form) {
             let error = 0;
@@ -3940,10 +4185,20 @@
         }
     }), 0);
     "use strict";
+    document.addEventListener("DOMContentLoaded", (function() {}));
     document.addEventListener("DOMContentLoaded", (function() {
-        const pathName = window.location.pathname.split("/").pop();
+        //! При открытии popup сохраняем параметры запроса в localStorage (проблема с открытым попап при загрузке страницы- что бы не терялись данные запроса в строке)
+        localStorage.setItem("queryParams", window.location.search);
+        const savedQueryParams = localStorage.getItem("queryParams");
+        if (savedQueryParams) {
+            const currentUrl = window.location.href.split("?")[0] + savedQueryParams;
+            history.replaceState(null, null, currentUrl);
+            localStorage.removeItem("queryParams");
+        }
+        //!=====================================================
+                const pathName = window.location.pathname.split("/").pop();
         const currentUrl = window.location.href;
-        let ulrHashArr = window.location.href.split("#");
+        let ulrHashArr = window.location.href.split("?");
         let urlHash = ulrHashArr[1];
         const showMoreButton = document.querySelector(".products__more");
         const productsItems = document.querySelector(".products__items");
@@ -4019,7 +4274,7 @@
             let productTemplateImage = `\n\t\t  <a href="${productUrl}" class="item-product__image -ibg">\n\t\t\t\t<img src="img/products/${productImage}" alt="${productTitle}">\n\t\t  </a>\n\t `;
             let productTemplateBodyStart = `<div class="item-product__body">`;
             let productTemplateBodyEnd = `</div>`;
-            let productTemplateContent = `\n\t\t  <div class="item-product__content">\n\t\t\t\t<h3 class="item-product__title">${productTitle}</h3>\n\t\t\t\t<a href='product.html#${product.id}' class="item-product__brand">${productBrand}</a>\n\t\t  </div>\n\t `;
+            let productTemplateContent = `\n\t\t  <div class="item-product__content">\n\t\t\t\t<h3 class="item-product__title">${productTitle}</h3>\n\t\t\t\t<a href='product.html?${product.id}' class="item-product__brand">${productBrand}</a>\n\t\t  </div>\n\t `;
             let productTemplatePrices = "";
             let productTemplatePricesStart = `<div class="item-product__prices">`;
             let productTemplatePricesCurrent = `<div class="item-product__price">${productPrice}$</div>`;
@@ -4068,6 +4323,13 @@
             const file = "files/json/products.json";
             const productURL = file;
             fetchProductInfo(urlHash);
+            window.addEventListener("popstate", (function(event) {
+                if (window.location.hash === "#product-popup") {
+                    window.history.back();
+                    window.location.reload();
+                }
+                window.history.back();
+            }));
             function fetchProductInfo(urlHash) {
                 fetch(productURL).then((response => response.json())).then((data => {
                     const filteredData = data.products.filter((product => {
@@ -4080,6 +4342,7 @@
                 }));
             }
             function displayProductInfo(filteredData) {
+                if (window.location.hash) history.replaceState(null, null, currentUrl);
                 const product = filteredData[0];
                 const productId = product.id;
                 const productTitle = product.title;
@@ -4105,17 +4368,25 @@
                 const productItemLabelSale = document.querySelector(".description__label_sale");
                 const productItemLabelNew = document.querySelector(".description__label_new");
                 const productItemImages = document.querySelectorAll(".product__gallery-item .product__img");
+                const productItemImgPopup = document.querySelector(".popup__img");
                 productTitlesItem.textContent = productTitle + " " + productBrand;
-                productTitlesItem.href = `product.html#${productId}`;
+                productTitlesItem.href = `product.html?${productId}`;
                 productItemTitle.textContent = productTitle + " " + productBrand;
                 productItemCategory.textContent = productTitle;
-                productItemCategory.href = productItemCategory.href + "#" + "category:" + productItemCategory.textContent;
+                productItemCategory.href = productItemCategory.href + "?" + "category:" + productItemCategory.textContent;
                 productItemBrand.textContent = productBrand;
-                productItemBrand.href = productItemBrand.href + "#" + "brand:" + productItemBrand.textContent;
+                productItemBrand.href = productItemBrand.href + "?" + "brand:" + productItemBrand.textContent;
                 productItemPrice.textContent = `${productPrice}$`;
-                productItemOldPrice.textContent = `${productOldPrice}$`;
+                if (productItemOldPrice.textContent !== "") productItemOldPrice.textContent = `${productOldPrice}$`;
                 productItemImages.forEach((function(item, index) {
                     return item.src = "img/products/" + productImage[index].name;
+                }));
+                productItemImages.forEach((function(item) {
+                    item.addEventListener("click", (function(e) {
+                        let targetImg = e.target;
+                        let srcImg = targetImg.src;
+                        productItemImgPopup.setAttribute("src", srcImg);
+                    }));
                 }));
                 if (productLabels) productLabels.forEach((function(item) {
                     if (item.type === "new") {
@@ -4127,13 +4398,80 @@
                         productItemLabelSale.classList.remove("_hidden");
                     }
                 }));
+                displayMayLikeProduct(productBrand);
+            }
+            const swiperList = document.querySelector(".maylike__wrapper");
+            async function displayMayLikeProduct(brand) {
+                const file = "files/json/products.json";
+                await fetch(file).then((response => response.json())).then((data => {
+                    const filteredData = data.products.filter((product => {
+                        const isBrandFiltered = product.brand === brand;
+                        return isBrandFiltered;
+                    }));
+                    function renderMayLikeCard(product) {
+                        const productId = product.id;
+                        const productUrl = product.url;
+                        const productImage = product.image[0].name;
+                        const productTitle = product.title;
+                        const productBrand = product.brand;
+                        const productPrice = product.price;
+                        const productOldPrice = product.priceOld;
+                        const productShareUrl = product.shareUrl;
+                        const productLikeUrl = product.likeUrl;
+                        const productLabels = product.labels;
+                        let productTemplateStart = `<div class="maylike__slide swiper-slide">\n\t\t\t\t\t\t<article data-pid="${productId}" class="products__item item-product">`;
+                        let productTemplateEnd = `</article></div>`;
+                        let productTemplateLabels = "";
+                        if (productLabels) {
+                            let productTemplateLabelsStart = `<div class="item-product__labels">`;
+                            let productTemplateLabelsEnd = `</div>`;
+                            let productTemplateLabelsContent = "";
+                            productLabels.forEach((labelItem => {
+                                productTemplateLabelsContent += `<div class="item-product__label item-product__label_${labelItem.type}">${labelItem.value}</div>`;
+                            }));
+                            productTemplateLabels += productTemplateLabelsStart;
+                            productTemplateLabels += productTemplateLabelsContent;
+                            productTemplateLabels += productTemplateLabelsEnd;
+                        }
+                        let productTemplateImage = `\n\t\t  <a href="${productUrl}" class="item-product__image -ibg">\n\t\t\t\t<img src="img/products/${productImage}" alt="${productTitle}">\n\t\t  </a>\n\t `;
+                        let productTemplateBodyStart = `<div class="item-product__body">`;
+                        let productTemplateBodyEnd = `</div>`;
+                        let productTemplateContent = `\n\t\t  <div class="item-product__content">\n\t\t\t\t<h3 class="item-product__title">${productTitle}</h3>\n\t\t\t\t<a href='product.html?${product.id}' class="item-product__brand">${productBrand}</a>\n\t\t  </div>\n\t `;
+                        let productTemplatePrices = "";
+                        let productTemplatePricesStart = `<div class="item-product__prices">`;
+                        let productTemplatePricesCurrent = `<div class="item-product__price">${productPrice}$</div>`;
+                        let productTemplatePricesOld = `<div class="item-product__price item-product__price_old">${productOldPrice}$</div>`;
+                        let productTemplatePricesEnd = `</div>`;
+                        productTemplatePrices = productTemplatePricesStart;
+                        productTemplatePrices += productTemplatePricesCurrent;
+                        if (productOldPrice) productTemplatePrices += productTemplatePricesOld;
+                        productTemplatePrices += productTemplatePricesEnd;
+                        let productTemplateActions = `\n\t\t  <div class="item-product__actions actions-product">\n\t\t\t\t<div class="actions-product__body">\n\t\t\t\t\t <a href="" class="actions-product__button button button_white">Buy</a>\n\t\t\t\t\t <a href="${productShareUrl}" class="actions-product__link icon-3">Share</a>\n\t\t\t\t\t <a href="${productLikeUrl}" class="actions-product__link icon-3">Like</a>\n\t\t\t\t</div>\n\t\t  </div>\n\t `;
+                        let productTemplateBody = "";
+                        productTemplateBody += productTemplateBodyStart;
+                        productTemplateBody += productTemplateContent;
+                        productTemplateBody += productTemplatePrices;
+                        productTemplateBody += productTemplateActions;
+                        productTemplateBody += productTemplateBodyEnd;
+                        let productTemplate = "";
+                        productTemplate += productTemplateStart;
+                        productTemplate += productTemplateLabels;
+                        productTemplate += productTemplateImage;
+                        productTemplate += productTemplateBody;
+                        productTemplate += productTemplateEnd;
+                        swiperList.insertAdjacentHTML("beforeend", productTemplate);
+                    }
+                    filteredData.forEach((product => {
+                        renderMayLikeCard(product);
+                    }));
+                })).catch((error => console.error("Ошибка загрузки данных:", error)));
             }
         }
         //! не доработано
         //! ===========================
-                if (currentUrl.includes("products.html#")) {
-            let ulrItem = window.location.href.split("products.html#");
-            let urlWithoutHash = window.location.href.split("#")[0];
+                if (currentUrl.includes("products.html?")) {
+            let ulrItem = window.location.href.split("products.html?");
+            let urlWithoutHash = window.location.href.split("?")[0];
             history.replaceState(null, null, urlWithoutHash);
             if (ulrItem[1].includes("category")) {
                 let categoryArr = ulrItem[1].split(":");
@@ -4141,7 +4479,6 @@
             } else if (ulrItem[1].includes("brand")) {
                 let brandArr = ulrItem[1].split(":");
                 let brand = decodeURIComponent(brandArr[1]);
-                document.querySelector('[data-id="1"');
                 let optionContent = document.querySelector(".select__content");
                 optionContent.textContent = brand;
                 let selector = `[data-value="${brand.toLowerCase()}"]`;

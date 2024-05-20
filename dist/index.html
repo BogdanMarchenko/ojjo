@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20240501143821">
+	<link rel="stylesheet" href="css/style.min.css?_v=20240520133016">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
 							<a class="menu__logo" href="index.html"><img src="img/logo.svg" alt="logo"></a>
 							<div class="menu__actions actions">
 								<div class="actions__find find">
-									<label class="find__label" for="form[find]"><span class="find__logo icon-1" href="#"></span></label>
+									<label class="find__label" for="form[find]"><span class="find__logo icon-1"></span></label>
 									<input class="find__input input" autocomplete="off" type="text" name="form[find]" id="form[find]" data-error="Ошибка" placeholder="Search">
 								</div>
 								<div class="actions__login login">
@@ -384,14 +384,15 @@
 								</a>
 								</a>
 							</div>
-
 						</div>
+						<!-- Если нужна навигация (влево/вправо) -->
+						<button type="button" class="swiper-button-prev"></button>
+						<button type="button" class="swiper-button-next"></button>
 					</div>
 
 					<a href="#" class="articals__button button">Read our blog</a>
 				</div>
 			</section>
-
 			<section class="page__social-section social-section">
 				<div class="social-section__container">
 					<h5 class="social-section__title top-title">#ojjo_jewerly</h5>
@@ -470,10 +471,10 @@
 					<div class="footer__list contacts-list">
 						<a class="contacts-list__title footer-list-title" href="#">contacts</a>
 						<ul class="contacts-list__list">
-							<li class="contacts-list__item"><a class="contacts-list__link" href="tel:8 (812) 234-56-554">8 (812)
+							<li class="contacts-list__item"><a class="contacts-list__link" href="tel:881223456554">8 (812)
 									234-56-55</a>
 							</li>
-							<li class="contacts-list__item"><a class="contacts-list__link" href="tel:8 (812) 234-56-554">8 (812)
+							<li class="contacts-list__item"><a class="contacts-list__link" href="tel:881223456554">8 (812)
 									234-56-55</a>
 							</li>
 							<li class="contacts-list__item"><a class="contacts-list__link" href="mailto:ojjo@ojjo.ru">ojjo@ojjo.ru</a>
@@ -515,17 +516,15 @@
 			</div>
 		</footer>
 	</div>
-	<!-- <div id="popup" aria-hidden="true" class="popup">
-	<div class="popup__wrapper">
-		<div class="popup__content">
-			<button data-close type="button" class="popup__close">Закрыть</button>
-			<div class="popup__text">
-				Text
+	<div id="product-popup" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close">Hide</button>
+				<img class="popup__img" src="" alt="product">
 			</div>
 		</div>
 	</div>
-</div> -->
-	<script src="js/app.min.js?_v=20240501143821"></script>
+	<script src="js/app.min.js?_v=20240520133016"></script>
 </body>
 
 </html>
