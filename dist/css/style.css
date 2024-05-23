@@ -2001,6 +2001,16 @@ body::after {
   color: #333333;
 }
 
+.titles__item:last-child a {
+  pointer-events: none;
+  /* Отключает события мыши, чтобы ссылка не реагировала на нажатия */
+  text-decoration: none;
+  /* Отключает подчеркивание ссылки */
+  color: goldenrod;
+  cursor: default;
+  /* Меняет курсор на стандартный */
+}
+
 .titles__item:not(:last-child) {
   border-bottom: 0.5px solid #333333;
 }
@@ -2206,6 +2216,94 @@ body::after {
 .maylike__wrapper {
   padding-top: 3.75rem;
   padding-bottom: 3.75rem;
+}
+
+.contacts {
+  padding-top: 10.6875rem;
+}
+
+.contacts__titles {
+  margin-bottom: 3.75rem;
+}
+
+.contacts__body {
+  padding-bottom: 3.6875rem;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.contacts__title {
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.contacts__columns {
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(277px, 1fr));
+}
+
+.contact-column__title {
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 140%;
+  margin-bottom: 1.5625rem;
+}
+
+.contact-column__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.contact-column__icon {
+  display: inline-block;
+  font-size: 1.25rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 30px;
+          flex: 0 0 30px;
+}
+
+.contact-column__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 0.9375rem;
+}
+
+.contact-column__link {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 150%;
+  width: 100%;
+}
+
+.map {
+  padding-top: 3.75rem;
+  padding-bottom: 2.5rem;
+}
+
+.map__container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  /* Это соотношение сторон 16:9 для обеспечения правильного масштабирования */
+}
+
+.map__container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .swiper {
@@ -3068,6 +3166,12 @@ button.swiper-pagination-bullet {
   }
 }
 
+@media (max-width: 71.25em) {
+  .contacts__columns {
+    gap: 1.875rem;
+  }
+}
+
 @media (max-width: 61.99875em) {
   .social__link:active {
     color: goldenrod;
@@ -3842,7 +3946,7 @@ button.swiper-pagination-bullet {
     color: goldenrod;
   }
 
-  .titles__item:hover {
+  .titles__item:not(:last-child):hover {
     color: goldenrod;
     border-bottom: 0.5px solid goldenrod;
   }
