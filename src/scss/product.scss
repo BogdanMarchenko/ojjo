@@ -122,8 +122,20 @@
 		line-height: math.div(19, 14);
 		position: relative;
 		color: $mainColor;
+		&:last-child a {
+			pointer-events: none; /* Отключает события мыши, чтобы ссылка не реагировала на нажатия */
+			text-decoration: none; /* Отключает подчеркивание ссылки */
+			color: goldenrod;
+			cursor: default; /* Меняет курсор на стандартный */
+		}
 
 		&:not(:last-child) {
+			@media (any-hover: hover) {
+				&:hover {
+					color: goldenrod;
+					border-bottom: 0.5px solid goldenrod;
+				}
+			}
 			border-bottom: 0.5px solid $mainColor;
 			&::before {
 				content: "/";
@@ -136,11 +148,11 @@
 				transform: translate(20px);
 			}
 		}
-		@media (any-hover: hover) {
-			&:hover {
-				color: goldenrod;
-				border-bottom: 0.5px solid goldenrod;
-			}
+	}
+	// .titles__link
+
+	&__link {
+		&-last {
 		}
 	}
 }

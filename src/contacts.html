@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('html/_head.htm',{
+"title":"Contacts"
+})
+
+<body>
+	<div class="wrapper">
+		@@include('html/_header.htm',{})
+		<main class="page">
+			<section class="page__contacts contacts">
+				<div class="contacts__container">
+					<ul class="contacts__titles titles">
+						<li class="titles__item">
+							<a href="index.html">Main page</a>
+						</li>
+						<li class="titles__item">
+							<a class="titles__link titles__link-last" href="#">Contacts</a>
+						</li>
+					</ul>
+					<div class="contacts__body">
+						<h2 class="contacts__title">Contacts</h2>
+						<div class="contacts__columns">
+							<div class="contacts__column contact-column">
+								<h6 class="contact-column__title">Main office</h6>
+								<div class="contact-column__body">
+									<div class="contact-column__icon icon-15"></div>
+									<ul class="contact-column__items">
+										<li class="contact-column__item">
+											<a href="" class="contact-column__link">123 Main Street
+												Anytown</a>
+										</li>
+										<li class="contact-column__item">
+											<a href="" class="contact-column__link">456 Elm Avenue
+												Springfield</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="contacts__column contact-column">
+								<h6 class="contact-column__title">Phone numbers</h6>
+								<div class="contact-column__body">
+									<div class="contact-column__icon icon-16"></div>
+									<ul class="contact-column__items">
+										<li class="contact-column__item">
+											<a href="tel:808124585645" class="contact-column__link">8 (812) 458-56-45</a>
+										</li>
+										<li class="contact-column__item">
+											<a href="tel:808124585600" class="contact-column__link">8-911-878-00-00</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="contacts__column contact-column">
+								<h6 class="contact-column__title">E-mail</h6>
+								<div class="contact-column__body">
+									<div class="contact-column__icon icon-8"></div>
+									<ul class="contact-column__items">
+										<li class="contact-column__item">
+											<a href="mailto:sales@ojjo.com" class="contact-column__link">office@ojjo.com</a>
+										</li>
+										<li class="contact-column__item">
+											<a href="mailto:sales@ojjo.com" class="contact-column__link">sales@ojjo.com</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="contacts__column contact-column">
+								<h6 class="contact-column__title">Additional address</h6>
+								<div class="contact-column__body">
+									<div class="contact-column__icon icon-15"></div>
+									<ul class="contact-column__items">
+										<li class="contact-column__item">
+											<a href="" class="contact-column__link">789 Oak Street
+												Riverside
+											</a>
+										</li>
+										<li class="contact-column__item">
+											<a href="" class="contact-column__link">321 Maple Lane
+												Hillcrest</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="page__map map">
+				<div class="map__container">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38709.00957868475!2d-73.96170428027345!3d40.782940350207104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDU0JzA5LjYiTiA3M8KwNTInNDguNSJX!5e0!3m2!1sen!2sus!4v1582729964416!5m2!1sen!2sus"
+						width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+				</div>
+			</section>
+
+		</main>
+		@@include('html/_footer.htm',{})
+	</div>
+	@@include('html/_popup.htm',{})
+	@@include('html/_js.htm',{})
+</body>
+
+</html>
